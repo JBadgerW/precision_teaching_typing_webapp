@@ -12,6 +12,8 @@
   <h1>Precision Teaching Typing</h1>
 </header>
 
+<div class="layout">
+
 <main>
 
   <section id="screen-select" class="screen">
@@ -62,7 +64,7 @@
 
 </main>
 
-<section id="diagramSection" class="diagram-section">
+<aside id="diagramControls" class="diagram-controls-col">
   <label class="diagram-toggle">
     <input type="checkbox" id="diagramToggle">
     Show keyboard diagram
@@ -72,25 +74,27 @@
     <label><input type="radio" name="diagramMode" value="bw" checked> Black &amp; white</label>
     <label><input type="radio" name="diagramMode" value="color"> Color (by finger)</label>
   </div>
+</aside>
 
-  <div id="diagramDisplay" class="diagram-display hidden">
-    <img id="diagramImg" src="chromebook_keyboard_diagram.svg" alt="Chromebook keyboard diagram">
+<div id="diagramDisplay" class="diagram-display hidden">
+  <img id="diagramImg" src="chromebook_keyboard_diagram.svg" alt="Chromebook keyboard diagram">
 
-    <div id="diagramLegend" class="diagram-legend hidden">
-      <h3>Which finger goes where</h3>
-      <ul>
-        <li><span class="swatch" style="background:#ff6666"></span>Left pinky</li>
-        <li><span class="swatch" style="background:#aaffaa"></span>Left ring finger</li>
-        <li><span class="swatch" style="background:#aaaaff"></span>Left middle finger</li>
-        <li><span class="swatch" style="background:#fafacc"></span>Left index finger</li>
-        <li><span class="swatch" style="background:aqua"></span>Right index finger</li>
-        <li><span class="swatch" style="background:#ffbb00"></span>Right middle finger</li>
-        <li><span class="swatch" style="background:pink"></span>Right ring finger</li>
-        <li><span class="swatch" style="background:#99ccff"></span>Right pinky</li>
-      </ul>
-    </div>
+  <div id="diagramLegend" class="diagram-legend hidden">
+    <h3>Which finger goes where</h3>
+    <ul>
+      <li><span class="swatch" style="background:#ff6666"></span>Left pinky</li>
+      <li><span class="swatch" style="background:#aaffaa"></span>Left ring finger</li>
+      <li><span class="swatch" style="background:#aaaaff"></span>Left middle finger</li>
+      <li><span class="swatch" style="background:#fafacc"></span>Left index finger</li>
+      <li><span class="swatch" style="background:aqua"></span>Right index finger</li>
+      <li><span class="swatch" style="background:#ffbb00"></span>Right middle finger</li>
+      <li><span class="swatch" style="background:pink"></span>Right ring finger</li>
+      <li><span class="swatch" style="background:#99ccff"></span>Right pinky</li>
+    </ul>
   </div>
-</section>
+</div>
+
+</div>
 
 <script src="tests.js"></script>
 <script src="stimulus.js"></script>

@@ -30,10 +30,31 @@ header h1 {
   font-size: clamp(1.25rem, 4vw, 1.75rem);
 }
 
-main {
-  max-width: 40rem;
+.layout {
+  max-width: 54rem;
   margin: 0 auto;
   padding: 0 1rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "main"
+    "controls"
+    "diagram";
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .layout {
+    grid-template-columns: minmax(0, 40rem) minmax(11rem, 13rem);
+    grid-template-areas:
+      "main    controls"
+      "diagram .";
+  }
+}
+
+main {
+  grid-area: main;
 }
 
 .screen {
@@ -237,10 +258,12 @@ button.selected {
   min-width: 10rem;
 }
 
-.diagram-section {
-  max-width: 40rem;
-  margin: 0 auto 3rem;
-  padding: 0 1rem;
+.diagram-controls-col {
+  grid-area: controls;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
 }
 
 .diagram-toggle {
@@ -254,8 +277,9 @@ button.selected {
 
 .diagram-mode-controls {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 0.75rem;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
   color: var(--text);
 }
 
@@ -268,7 +292,7 @@ button.selected {
 }
 
 .diagram-display {
-  margin-top: 1rem;
+  grid-area: diagram;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
@@ -319,7 +343,7 @@ button.selected {
 }
 
 @media (max-width: 30rem) {
-  main {
+  .layout {
     padding: 0 0.5rem 2rem;
   }
   .screen {
