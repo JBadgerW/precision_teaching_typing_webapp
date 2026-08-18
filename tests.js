@@ -18,6 +18,17 @@
 //                     the durations list.
 //   instructions     optional short line shown to the student before they
 //                     start.
+//   source           optional. Instead of writing `content` inline, point
+//                     this at a plain .txt file in this folder and leave
+//                     `content` out entirely - it's filled in automatically
+//                     the first time that test is picked. For type
+//                     "wordbank", each non-blank line in the file becomes
+//                     one bank entry (a file of whole sentences works the
+//                     same way as a file of single words - one per line).
+//                     For type "text", the whole file becomes the content
+//                     to repeat. Good for large sentence lists or literature
+//                     passages that are awkward to paste inline as a
+//                     quoted JS string.
 //
 // -----------------------------------------------------------------------
 // The 18-stage curriculum below follows the standard finger-by-finger key
@@ -369,5 +380,27 @@ const TESTS = [
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the sentence, including capitals and punctuation."
+  },
+
+  // ---- Extra: beyond the 18-stage curriculum ----
+  // These stay last in the list on purpose - they're for students who have
+  // finished all 18 stages above.
+  {
+    id: "extra-sentences-common-words",
+    name: "Extra: Sentences (common words)",
+    type: "wordbank",
+    source: "sentences_top_english_words.txt",
+    durations: [30, 60, 120],
+    defaultDuration: 60,
+    instructions: "Type each sentence as it appears, including capitals and punctuation."
+  },
+  {
+    id: "extra-passage-alice-in-wonderland",
+    name: "Extra: Passage - Alice in Wonderland",
+    type: "text",
+    source: "passage_alice_in_wonderland.txt",
+    durations: [30, 60, 120],
+    defaultDuration: 60,
+    instructions: "Type the passage. If you reach the end before time is up, it repeats from the start."
   }
 ];

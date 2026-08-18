@@ -123,7 +123,53 @@
   }
 
   testSelect.addEventListener("change", onTestSelected);
-  startBtn.addEventListener("click", () => beginReady());
+
+  // Tests can point at an external .txt file via `source` instead of
+  // writing `content` inline (see tests.js). Fetch and cache it onto the
+  // test the first time it's needed; every other test already has
+  // `content` set and resolves immediately.
+  function loadTestContent(test) {
+    if (test.content || !test.source) return Promise.resolve();
+    if (test._loadPromise) return test._loadPromise;
+
+    test._loadPromise = fetch(test.source)
+      .then((response) => {
+        if (!response.ok) throw new Error(`${test.source}: HTTP ${response.status}`);
+        return response.text();
+      })
+      .then((text) => {
+        if (test.type === "wordbank") {
+          test.content = text.split("\n").map((line) => line.trim()).filter((line) => line.length > 0);
+        } else {
+          test.content = text.replace(/\s+/g, " ").trim();
+        }
+      })
+      .catch((err) => {
+        test._loadPromise = null;
+        throw err;
+      });
+
+    return test._loadPromise;
+  }
+
+  startBtn.addEventListener("click", () => {
+    if (!currentTest) return;
+    const label = startBtn.textContent;
+    startBtn.disabled = true;
+    startBtn.textContent = "Loading...";
+    loadTestContent(currentTest)
+      .then(() => {
+        startBtn.textContent = label;
+        updateStartEnabled();
+        beginReady();
+      })
+      .catch((err) => {
+        console.error(err);
+        startBtn.textContent = label;
+        updateStartEnabled();
+        alert("Couldn't load this test's content. Check your connection and try again.");
+      });
+  });
 
   // ---- ready screen (countdown) ----
 
