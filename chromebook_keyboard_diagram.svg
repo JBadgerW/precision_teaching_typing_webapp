@@ -1,151 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 1478.439 522" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="1478.439" height="522" fill="white" style=""/>
-  <g transform="translate(-29,-129)">
+  <g transform="matrix(1, 0, 0, 1, -25.268238, -129.466476)">
     <rect x="45.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="55.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">~</text>
-    <text x="55.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">`</text>
+    <text x="55.0" y="171.0" font-family="Arial, sans-serif" font-size="36" fill="black">~</text>
+    <text x="55.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">`</text>
     <rect x="145.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="155.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">!</text>
-    <text x="155.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">1</text>
+    <text x="155" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">!</text>
+    <text x="155.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">1</text>
     <rect x="245.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="255.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">@</text>
-    <text x="255.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">2</text>
+    <text x="255" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">@</text>
+    <text x="255.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">2</text>
     <rect x="345.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="355.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">#</text>
-    <text x="355.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">3</text>
+    <text x="355" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">#</text>
+    <text x="355.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">3</text>
     <rect x="445.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="455.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">$</text>
-    <text x="455.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">4</text>
+    <text x="455" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">$</text>
+    <text x="455.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">4</text>
     <rect x="545.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="555.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">%</text>
-    <text x="555.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">5</text>
+    <text x="555" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">%</text>
+    <text x="555.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">5</text>
     <rect x="645.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="655.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">^</text>
-    <text x="655.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">6</text>
+    <text x="655" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">^</text>
+    <text x="655.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">6</text>
     <rect x="745.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="755.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">&amp;</text>
-    <text x="755.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">7</text>
+    <text x="755" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">&amp;</text>
+    <text x="755.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">7</text>
     <rect x="845.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="855.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">*</text>
-    <text x="855.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">8</text>
+    <text x="855" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">*</text>
+    <text x="855.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">8</text>
     <rect x="945.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="955.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">(</text>
-    <text x="955.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">9</text>
+    <text x="955" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">(</text>
+    <text x="955.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">9</text>
     <rect x="1045.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1055.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">)</text>
-    <text x="1055.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">0</text>
+    <text x="1055" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">)</text>
+    <text x="1055.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">0</text>
     <rect x="1145.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1155.0" y="171.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">_</text>
-    <text x="1155.0" y="225.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">-</text>
+    <text x="1155.0" y="171.0" font-family="Arial, sans-serif" font-size="36" fill="black">_</text>
+    <text x="1155.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">-</text>
     <rect x="1245.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1255.0" y="171.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">+</text>
-    <text x="1255.0" y="225.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">=</text>
+    <text x="1255" y="177.636" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">+</text>
+    <text x="1255.0" y="225.0" font-family="Arial, sans-serif" font-size="36" fill="black">=</text>
     <rect x="1345" y="145" width="146.437" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="1418.22" y="198.0" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre;">backspace</text>
+    <text x="1418.22" y="199.954" font-family="Arial, sans-serif" font-size="28" fill="black" text-anchor="middle" style="white-space: pre; font-size: 28px;">backspace</text>
     <rect x="45" y="245" width="113.276" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="103.36" y="298.0" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre;">tab</text>
+    <text x="101.638" y="302.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">tab</text>
     <rect x="170.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="215.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">q</text>
+    <text x="215.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">q</text>
     <rect x="270.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="315.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">w</text>
+    <text x="315.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">w</text>
     <rect x="370.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="415.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">e</text>
+    <text x="415.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">e</text>
     <rect x="470.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="515.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">r</text>
+    <text x="515.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">r</text>
     <rect x="570.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="615.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">t</text>
+    <text x="615.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">t</text>
     <rect x="670.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="715.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">y</text>
+    <text x="715.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">y</text>
     <rect x="770.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="815.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">u</text>
+    <text x="815.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">u</text>
     <rect x="870.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="915.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">i</text>
+    <text x="915.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">i</text>
     <rect x="970.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1015.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">o</text>
+    <text x="1015.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">o</text>
     <rect x="1070.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1115.0" y="300.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">p</text>
+    <text x="1115.0" y="300.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">p</text>
     <rect x="1170.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1180.0" y="271.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">{</text>
-    <text x="1180.0" y="325.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">[</text>
+    <text x="1181.23" y="276.333" font-family="Arial, sans-serif" font-size="36" fill="black">{</text>
     <rect x="1270.0" y="245.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1280.0" y="271.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">}</text>
-    <text x="1280.0" y="325.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">]</text>
+    <text x="1180.56" y="320.645" font-family="Arial, sans-serif" font-size="36" fill="black">[</text>
+    <text x="1279.59" y="275.512" font-family="Arial, sans-serif" font-size="36" fill="black">}</text>
+    <text x="1279.72" y="320.645" font-family="Arial, sans-serif" font-size="36" fill="black">]</text>
     <rect x="1372.93" y="245" width="118.506" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="1382.93" y="271.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">|</text>
-    <text x="1382.93" y="325.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">\</text>
+    <text x="1383.75" y="277.153" font-family="Arial, sans-serif" font-size="36" fill="black">|</text>
+    <text x="1382.93" y="325.0" font-family="Arial, sans-serif" font-size="36" fill="black">\</text>
     <rect x="45.0" y="345.0" width="140.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="115.0" y="398.0" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre;">search</text>
+    <text x="115" y="402.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">search</text>
     <rect x="195.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="240.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">a</text>
+    <text x="240.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">a</text>
     <rect x="295.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="340.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">s</text>
+    <text x="340.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">s</text>
     <rect x="395.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="440.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">d</text>
+    <text x="440.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">d</text>
     <rect x="495.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="540.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">f</text>
+    <text x="540.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">f</text>
     <rect x="595.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="640.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">g</text>
+    <text x="640.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">g</text>
     <rect x="695.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="740.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">h</text>
+    <text x="740.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">h</text>
     <rect x="795.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="840.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">j</text>
+    <text x="840.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">j</text>
     <rect x="895.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="940.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">k</text>
+    <text x="940.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">k</text>
     <rect x="995.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1040.0" y="400.0" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre;">l</text>
+    <text x="1040.0" y="400.0" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">l</text>
     <rect x="1095.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1105.0" y="371.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">:</text>
-    <text x="1105.0" y="425.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">;</text>
+    <text x="1104.18" y="374.252" font-family="Arial, sans-serif" font-size="36" fill="black">:</text>
+    <text x="1104.59" y="418.847" font-family="Arial, sans-serif" font-size="36" fill="black">;</text>
     <rect x="1195.0" y="345.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1205.0" y="371.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">"</text>
-    <text x="1205.0" y="425.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">'</text>
+    <text x="1203.36" y="380.025" font-family="Arial, sans-serif" font-size="36" fill="black">"</text>
+    <text x="1205.0" y="425.0" font-family="Arial, sans-serif" font-size="36" fill="black">'</text>
     <rect x="1293.25" y="345" width="198.183" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="1392.34" y="398.0" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre;">enter</text>
+    <text font-size="36" style="font-family: Arial, sans-serif; text-anchor: middle; white-space: pre; font-size: 36px;" x="1391.7" y="402.608">enter</text>
     <rect x="45" y="445" width="200.783" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="146.447" y="497.299" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">shift</text>
+    <text x="145.081" y="502.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">shift</text>
     <rect x="259.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="304.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">z</text>
+    <text x="304.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">z</text>
     <rect x="359.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="404.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">x</text>
+    <text x="404.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">x</text>
     <rect x="459.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="504.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">c</text>
+    <text x="504.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">c</text>
     <rect x="559.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="604.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">v</text>
+    <text x="604.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">v</text>
     <rect x="659.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="704.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">b</text>
+    <text x="704.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">b</text>
     <rect x="759.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="804.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">n</text>
+    <text x="804.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">n</text>
     <rect x="859.747" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="904.747" y="500" font-family="Arial, sans-serif" font-size="34" fill="black" text-anchor="middle" style="white-space: pre; font-size: 34px;">m</text>
+    <text x="904.747" y="500" font-family="Arial, sans-serif" font-size="44" fill="black" text-anchor="middle">m</text>
     <rect x="969.037" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="979.037" y="471" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">&lt;</text>
-    <text x="979.037" y="525" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">,</text>
+    <text x="980.364" y="480.29" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">&lt;</text>
+    <text x="985.874" y="521.019" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">,</text>
     <rect x="1071.69" y="445" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1081.69" y="471" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">&gt;</text>
-    <text x="1081.69" y="525" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">.</text>
+    <text x="1083.02" y="480.29" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">&gt;</text>
+    <text x="1088.53" y="521.019" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">.</text>
     <rect x="1177.0" y="445.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1187.0" y="471.0" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre;">?</text>
-    <text x="1187.0" y="525.0" font-family="Arial, sans-serif" font-size="45" fill="black" style="white-space: pre;">/</text>
+    <text x="1188.33" y="480.29" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">?</text>
+    <text x="1193.2" y="521.019" font-family="Arial, sans-serif" font-size="36" fill="black" style="white-space: pre; font-size: 36px;">/</text>
     <rect x="1278.28" y="445" width="213.159" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="1384.86" y="498.0" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre;">shift</text>
+    <text x="1384.55" y="502.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">shift</text>
     <rect x="45" y="545" width="200.956" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="145.478" y="597.299" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">ctrl</text>
+    <text x="145.478" y="602.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">ctrl</text>
     <rect x="262.592" y="545" width="187.684" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="356.175" y="597.299" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">alt</text>
+    <text x="356.129" y="602.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">alt</text>
     <rect x="461.603" y="545" width="502.594" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2" style=""/>
-    <text x="712.9" y="597.299" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">space</text>
+    <text x="712.9" y="602.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">space</text>
     <rect x="976.851" y="545" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1021.59" y="597.299" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">alt</text>
+    <text x="1021.55" y="602.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">alt</text>
     <rect x="1076.85" y="545" width="90" height="90" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1121.85" y="598" font-family="Arial, sans-serif" font-size="22" fill="black" text-anchor="middle" style="white-space: pre; font-size: 22px;">ctrl</text>
+    <text x="1121.85" y="602.608" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">ctrl</text>
     <rect x="1298.18" y="545" width="90" height="40" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1343.18" y="573" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre; font-size: 23px;">^</text>
     <rect x="1198.18" y="595" width="90" height="40" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1243.18" y="623" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre; font-size: 23px;">&lt;</text>
+    <text x="1241.85" y="628.309" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">&lt;</text>
     <rect x="1298.18" y="595" width="90" height="40" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1343.18" y="623" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre; font-size: 23px;">v</text>
+    <text x="1343.18" y="623" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle">v</text>
     <rect x="1398.18" y="595" width="90" height="40" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
-    <text x="1443.18" y="623" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre; font-size: 23px;">&gt;</text>
+    <text x="1441.85" y="628.309" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; font-size: 36px;">&gt;</text>
+    <text x="1343.18" y="-555.22" font-family="Arial, sans-serif" font-size="36" fill="black" text-anchor="middle" style="white-space: pre; stroke-width: 1; font-size: 36px;" transform="matrix(1, 0, 0, -1, 0, 0)">v</text>
   </g>
 </svg>
