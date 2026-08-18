@@ -35,7 +35,7 @@ const TESTS = [
     name: "Stage 1: F and J",
     type: "text",
     content: "f j",
-    durations: [10, 15],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
     instructions: "Type f and j, alternating. Fingers rest here between every other reach."
   },
@@ -46,7 +46,7 @@ const TESTS = [
     name: "Stage 2: D and K",
     type: "text",
     content: "d k f j",
-    durations: [10, 15],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
     instructions: "Type d and k, then review f and j."
   },
@@ -57,7 +57,7 @@ const TESTS = [
     name: "Stage 3: S and L",
     type: "text",
     content: "s l d k",
-    durations: [10, 15],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
     instructions: "Type s and l, then review d and k."
   },
@@ -68,7 +68,7 @@ const TESTS = [
     name: "Stage 4: A and ;",
     type: "text",
     content: "a ; s l",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type a and semicolon, then review s and l."
   },
@@ -77,7 +77,7 @@ const TESTS = [
     name: "Stage 4 words: A and ;",
     type: "wordbank",
     content: ["as", "ask", "add", "sad", "fad", "lad", "fall", "lass", "flask", "salad", "alas"],
-    durations: [15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -88,7 +88,7 @@ const TESTS = [
     name: "Stage 5: G and H",
     type: "text",
     content: "g h a ;",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type g and h, then review a and semicolon. Home row is now complete."
   },
@@ -97,7 +97,7 @@ const TESTS = [
     name: "Stage 5 words: G and H",
     type: "wordbank",
     content: ["gas", "has", "flag", "flash", "glass", "half", "hall", "shall", "dash", "gala", "salsa"],
-    durations: [15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -108,7 +108,7 @@ const TESTS = [
     name: "Stage 6: E and I",
     type: "text",
     content: "e i",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type e and i, reaching up from the home row."
   },
@@ -117,7 +117,7 @@ const TESTS = [
     name: "Stage 6 words: E and I",
     type: "wordbank",
     content: ["is", "his", "she", "seal", "leaf", "safe", "sale", "fake", "fish", "field"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -128,7 +128,7 @@ const TESTS = [
     name: "Stage 7: R and U",
     type: "text",
     content: "r u",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type r and u, reaching up from f and j."
   },
@@ -137,7 +137,7 @@ const TESTS = [
     name: "Stage 7 words: R and U",
     type: "wordbank",
     content: ["dark", "hair", "fear", "heard", "rush", "guard", "girl", "grade", "share", "grief"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -148,7 +148,7 @@ const TESTS = [
     name: "Stage 8: T and Y",
     type: "text",
     content: "t y",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type t and y."
   },
@@ -157,7 +157,7 @@ const TESTS = [
     name: "Stage 8 words: T and Y",
     type: "wordbank",
     content: ["the", "that", "this", "they", "great", "right", "light", "fight", "study", "tasty"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -168,7 +168,7 @@ const TESTS = [
     name: "Stage 9: W and O",
     type: "text",
     content: "w o",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type w and o."
   },
@@ -177,7 +177,7 @@ const TESTS = [
     name: "Stage 9 words: W and O",
     type: "wordbank",
     content: ["who", "how", "show", "slow", "grow", "throw", "world", "work", "worth", "story"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -188,7 +188,7 @@ const TESTS = [
     name: "Stage 10: Q and P",
     type: "text",
     content: "q p",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type q and p. Top row is now complete."
   },
@@ -197,7 +197,7 @@ const TESTS = [
     name: "Stage 10 words: Q and P",
     type: "wordbank",
     content: ["up", "top", "stop", "play", "sport", "paper", "quiet", "square", "equal", "quote"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -208,7 +208,7 @@ const TESTS = [
     name: "Stage 11: V and M",
     type: "text",
     content: "v m",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type v and m, reaching down from f and j."
   },
@@ -217,7 +217,7 @@ const TESTS = [
     name: "Stage 11 words: V and M",
     type: "wordbank",
     content: ["am", "may", "day", "team", "dream", "move", "love", "give", "have", "very"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -228,7 +228,7 @@ const TESTS = [
     name: "Stage 12: C and ,",
     type: "text",
     content: "c ,",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type c and comma."
   },
@@ -237,7 +237,7 @@ const TESTS = [
     name: "Stage 12 words: C and ,",
     type: "wordbank",
     content: ["cat", "cup", "cast", "act", "race", "space", "place", "voice", "peace", "clear"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -248,7 +248,7 @@ const TESTS = [
     name: "Stage 13: X and .",
     type: "text",
     content: "x .",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type x and period."
   },
@@ -257,7 +257,7 @@ const TESTS = [
     name: "Stage 13 words: X and .",
     type: "wordbank",
     content: ["six", "fix", "mix", "flex", "exit", "extra", "text", "exact"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -268,7 +268,7 @@ const TESTS = [
     name: "Stage 14: Z and /",
     type: "text",
     content: "z /",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type z and slash."
   },
@@ -277,7 +277,7 @@ const TESTS = [
     name: "Stage 14 words: Z and /",
     type: "wordbank",
     content: ["zoo", "size", "prize", "quiz", "amaze", "crazy", "lazy", "gaze"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -288,7 +288,7 @@ const TESTS = [
     name: "Stage 15: N and B",
     type: "text",
     content: "n b",
-    durations: [10, 15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type n and b. All 26 letters are now covered."
   },
@@ -297,7 +297,7 @@ const TESTS = [
     name: "Stage 15 words: N and B",
     type: "wordbank",
     content: ["and", "know", "been", "number", "bring", "brown", "night", "begin", "banana", "wonderful"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear."
   },
@@ -308,7 +308,7 @@ const TESTS = [
     name: "Stage 16: Shift and capitals",
     type: "text",
     content: "Ff Jj Dd Kk Ss Ll Aa",
-    durations: [15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Alternate capital and lowercase. Use the shift key on the opposite hand from the letter."
   },
@@ -317,7 +317,7 @@ const TESTS = [
     name: "Stage 16 words: capitalized names",
     type: "wordbank",
     content: ["Ben", "Grace", "Jack", "Faith", "Kevin", "Sara", "Max", "Wendy"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type each name with a capital first letter."
   },
@@ -328,7 +328,7 @@ const TESTS = [
     name: "Stage 17: Punctuation",
     type: "text",
     content: "Really? Okay. Wait!",
-    durations: [15, 30],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
     instructions: "Type the phrase, including capitals and punctuation."
   },
@@ -337,7 +337,7 @@ const TESTS = [
     name: "Stage 17 words: contractions",
     type: "wordbank",
     content: ["can't", "don't", "won't", "isn't", "it's", "didn't", "wasn't", "couldn't"],
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type each contraction, including the apostrophe."
   },
@@ -348,7 +348,7 @@ const TESTS = [
     name: "Stage 18: Sentence - quick brown fox",
     type: "text",
     content: "The quick brown fox jumps over the lazy dog.",
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the sentence, including capitals and punctuation."
   },
@@ -357,7 +357,7 @@ const TESTS = [
     name: "Stage 18: Sentence - seashells",
     type: "text",
     content: "She sells seashells by the seashore.",
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the sentence, including capitals and punctuation."
   },
@@ -366,7 +366,7 @@ const TESTS = [
     name: "Stage 18: Sentence - night sky",
     type: "text",
     content: "Bright stars filled the quiet night sky.",
-    durations: [30, 60],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the sentence, including capitals and punctuation."
   }
