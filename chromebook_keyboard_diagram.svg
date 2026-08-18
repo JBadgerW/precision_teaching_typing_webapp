@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 1550.0 680.0" xmlns="http://www.w3.org/2000/svg">
-  <rect y="114.023" width="1550" height="565.977" fill="white" style=""/>
+<svg viewBox="0 0 1478.439 522" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1478.439" height="522" fill="white" style=""/>
+  <g transform="translate(-29,-129)">
   <rect x="45.0" y="145.0" width="90.0" height="90.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
   <text x="55.0" y="171.0" font-family="Arial, sans-serif" font-size="24" fill="black" style="white-space: pre;">~</text>
   <text x="55.0" y="225.0" font-family="Arial, sans-serif" font-size="30" fill="black" style="white-space: pre;">`</text>
@@ -146,4 +147,5 @@
   <text x="1310.0" y="623.0" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre;">v</text>
   <rect x="1365.0" y="595.0" width="90.0" height="40.0" rx="8" ry="8" fill="white" stroke="black" stroke-width="2"/>
   <text x="1410.0" y="623.0" font-family="Arial, sans-serif" font-size="23" fill="black" text-anchor="middle" style="white-space: pre;">&gt;</text>
+  </g>
 </svg>
