@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Teaching Typing</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Precision Teaching Typing</h1>
+</header>
+
+<main>
+
+  <section id="screen-select" class="screen">
+    <label for="testSelect">Pinpoint</label>
+    <select id="testSelect"></select>
+
+    <p id="testInstructions" class="instructions"></p>
+
+    <div id="durationButtons" class="duration-buttons" role="group" aria-label="Timing"></div>
+
+    <button id="startBtn" type="button" disabled>Start</button>
+  </section>
+
+  <section id="screen-ready" class="screen hidden">
+    <div id="countdownDisplay" class="countdown"></div>
+  </section>
+
+  <section id="screen-running" class="screen hidden">
+    <p id="runningInstructions" class="instructions"></p>
+    <div id="timerDisplay" class="timer"></div>
+    <div id="typingArea" class="typing-area">
+      <div id="stimulusDisplay" class="stimulus"></div>
+      <input id="hiddenInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+  </section>
+
+  <section id="screen-results" class="screen hidden">
+    <h2>Results</h2>
+
+    <dl class="results-grid">
+      <dt>Time</dt><dd id="resultTime"></dd>
+      <dt>Correct</dt><dd id="resultCorrect"></dd>
+      <dt>Incorrect</dt><dd id="resultIncorrect"></dd>
+      <dt>Correct / min</dt><dd id="resultCorrectPerMin"></dd>
+      <dt>Incorrect / min</dt><dd id="resultIncorrectPerMin"></dd>
+    </dl>
+
+    <h3>Most missed keys</h3>
+    <ul id="errorList" class="error-list"></ul>
+
+    <p class="chart-reminder">Copy these numbers onto your chart.</p>
+
+    <div class="results-buttons">
+      <button id="tryAgainBtn" type="button">Try Again</button>
+      <button id="pickAnotherBtn" type="button">Pick Another Test</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="tests.js"></script>
+<script src="stimulus.js"></script>
+<script src="scoring.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

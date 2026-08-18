@@ -1,0 +1,294 @@
+// app.js
+// Screen flow: select -> ready -> running -> results, looping back to
+// either ready ("Try Again") or select ("Pick Another Test").
+// No history is stored anywhere - results are shown once, for the student
+// to copy onto their own paper chart, and then discarded.
+
+(function () {
+  const COUNTDOWN_STEPS = ["3", "2", "1", "GO"];
+  const COUNTDOWN_STEP_MS = 700;
+  const TIMER_TICK_MS = 100;
+
+  const screens = {
+    select: document.getElementById("screen-select"),
+    ready: document.getElementById("screen-ready"),
+    running: document.getElementById("screen-running"),
+    results: document.getElementById("screen-results")
+  };
+
+  const testSelect = document.getElementById("testSelect");
+  const testInstructions = document.getElementById("testInstructions");
+  const durationButtons = document.getElementById("durationButtons");
+  const startBtn = document.getElementById("startBtn");
+
+  const countdownDisplay = document.getElementById("countdownDisplay");
+
+  const runningInstructions = document.getElementById("runningInstructions");
+  const timerDisplay = document.getElementById("timerDisplay");
+  const stimulusDisplay = document.getElementById("stimulusDisplay");
+  const hiddenInput = document.getElementById("hiddenInput");
+
+  const resultTime = document.getElementById("resultTime");
+  const resultCorrect = document.getElementById("resultCorrect");
+  const resultIncorrect = document.getElementById("resultIncorrect");
+  const resultCorrectPerMin = document.getElementById("resultCorrectPerMin");
+  const resultIncorrectPerMin = document.getElementById("resultIncorrectPerMin");
+  const errorList = document.getElementById("errorList");
+  const tryAgainBtn = document.getElementById("tryAgainBtn");
+  const pickAnotherBtn = document.getElementById("pickAnotherBtn");
+
+  // ---- per-run state ----
+  let currentTest = null;
+  let currentDuration = null;
+  let stimulusGen = null;
+  let scorer = null;
+  let startTime = null;
+  let renderedLength = 0;
+  let timerIntervalId = null;
+  let running = false;
+
+  function setScreen(name) {
+    Object.values(screens).forEach((el) => el.classList.add("hidden"));
+    screens[name].classList.remove("hidden");
+  }
+
+  // ---- select screen ----
+
+  function populateTestSelect() {
+    TESTS.forEach((test) => {
+      const opt = document.createElement("option");
+      opt.value = test.id;
+      opt.textContent = test.name;
+      testSelect.appendChild(opt);
+    });
+  }
+
+  function getSelectedTest() {
+    return TESTS.find((t) => t.id === testSelect.value) || null;
+  }
+
+  function renderDurationButtons(test) {
+    durationButtons.innerHTML = "";
+    currentDuration = null;
+
+    if (!test) return;
+
+    let defaultDuration = test.defaultDuration;
+    if (!test.durations.includes(defaultDuration)) {
+      console.warn(
+        `Test "${test.id}" has defaultDuration ${defaultDuration} which is not in its durations list; falling back to ${test.durations[0]}.`
+      );
+      defaultDuration = test.durations[0];
+    }
+
+    test.durations.forEach((seconds) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = `${seconds}s`;
+      btn.addEventListener("click", () => selectDuration(seconds));
+      durationButtons.appendChild(btn);
+    });
+
+    selectDuration(defaultDuration);
+  }
+
+  function selectDuration(seconds) {
+    currentDuration = seconds;
+    Array.from(durationButtons.children).forEach((btn) => {
+      btn.classList.toggle("selected", btn.textContent === `${seconds}s`);
+    });
+    updateStartEnabled();
+  }
+
+  function updateStartEnabled() {
+    startBtn.disabled = !(currentTest && currentDuration);
+  }
+
+  function onTestSelected() {
+    currentTest = getSelectedTest();
+    testInstructions.textContent = currentTest && currentTest.instructions ? currentTest.instructions : "";
+    renderDurationButtons(currentTest);
+    updateStartEnabled();
+  }
+
+  testSelect.addEventListener("change", onTestSelected);
+  startBtn.addEventListener("click", () => beginReady());
+
+  // ---- ready screen (countdown) ----
+
+  function beginReady() {
+    setScreen("ready");
+    let step = 0;
+    countdownDisplay.textContent = COUNTDOWN_STEPS[step];
+    const intervalId = setInterval(() => {
+      step++;
+      if (step >= COUNTDOWN_STEPS.length) {
+        clearInterval(intervalId);
+        beginRunning();
+        return;
+      }
+      countdownDisplay.textContent = COUNTDOWN_STEPS[step];
+    }, COUNTDOWN_STEP_MS);
+  }
+
+  // ---- running screen ----
+
+  function beginRunning() {
+    stimulusGen = createStimulusGenerator(currentTest, currentDuration);
+    scorer = createScorer(stimulusGen);
+    renderedLength = 0;
+    stimulusDisplay.innerHTML = "";
+    renderNewChars();
+
+    runningInstructions.textContent = currentTest.instructions || "";
+    hiddenInput.value = "";
+
+    setScreen("running");
+    updateCursor(0);
+
+    running = true;
+    startTime = performance.now();
+    updateTimerDisplay();
+    timerIntervalId = setInterval(onTimerTick, TIMER_TICK_MS);
+
+    hiddenInput.focus();
+  }
+
+  function renderNewChars() {
+    const total = stimulusGen.length;
+    if (total <= renderedLength) return;
+    const frag = document.createDocumentFragment();
+    const addition = stimulusGen.substring(renderedLength, total);
+    for (let i = 0; i < addition.length; i++) {
+      const span = document.createElement("span");
+      span.textContent = addition[i];
+      span.className = "char";
+      frag.appendChild(span);
+    }
+    stimulusDisplay.appendChild(frag);
+    renderedLength = total;
+  }
+
+  function updateCursor(position) {
+    const prevCurrent = stimulusDisplay.querySelector(".char.current");
+    if (prevCurrent) prevCurrent.classList.remove("current");
+    const next = stimulusDisplay.children[position];
+    if (next) {
+      next.classList.add("current");
+      next.scrollIntoView({ block: "nearest" });
+    }
+  }
+
+  function onKeydown(event) {
+    if (!running) return;
+    const prevPosition = scorer.position;
+    const result = scorer.handleKeydown(event);
+    if (!result) return;
+
+    renderNewChars();
+
+    const span = stimulusDisplay.children[prevPosition];
+    if (span) {
+      span.classList.remove("char");
+      span.classList.add(result.correct ? "correct" : "incorrect");
+    }
+
+    updateCursor(scorer.position);
+  }
+
+  hiddenInput.addEventListener("keydown", onKeydown);
+  hiddenInput.addEventListener("blur", () => {
+    if (running) hiddenInput.focus();
+  });
+
+  function onTimerTick() {
+    const elapsedMs = performance.now() - startTime;
+    updateTimerDisplay(elapsedMs);
+    if (elapsedMs >= currentDuration * 1000) {
+      endRun();
+    }
+  }
+
+  function updateTimerDisplay(elapsedMs) {
+    const elapsedSeconds = elapsedMs ? elapsedMs / 1000 : 0;
+    const remaining = Math.max(0, Math.ceil(currentDuration - elapsedSeconds));
+    timerDisplay.textContent = `${remaining}s`;
+  }
+
+  function endRun() {
+    running = false;
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+    showResults();
+  }
+
+  // ---- results screen ----
+
+  function showResults() {
+    const minutes = currentDuration / 60;
+    const correct = scorer.correctCount;
+    const incorrect = scorer.incorrectCount;
+
+    resultTime.textContent = `${currentDuration}s`;
+    resultCorrect.textContent = correct;
+    resultIncorrect.textContent = incorrect;
+    resultCorrectPerMin.textContent = Math.round(correct / minutes);
+    resultIncorrectPerMin.textContent = Math.round(incorrect / minutes);
+
+    renderErrorBreakdown();
+    setScreen("results");
+  }
+
+  function renderErrorBreakdown() {
+    errorList.innerHTML = "";
+    const breakdown = scorer.errorBreakdown(5);
+
+    if (breakdown.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No errors - great job!";
+      errorList.appendChild(li);
+      return;
+    }
+
+    const maxCount = breakdown[0][1];
+    const MAX_BAR_REM = 8;
+    breakdown.forEach(([char, count]) => {
+      const li = document.createElement("li");
+
+      const keySpan = document.createElement("span");
+      keySpan.className = "key";
+      keySpan.textContent = char === " " ? "[space]" : char;
+
+      const barSpan = document.createElement("span");
+      barSpan.className = "bar";
+      const widthRem = Math.max(0.5, (count / maxCount) * MAX_BAR_REM);
+      barSpan.style.width = `${widthRem}rem`;
+
+      const countSpan = document.createElement("span");
+      countSpan.className = "count";
+      countSpan.textContent = count;
+
+      li.appendChild(keySpan);
+      li.appendChild(barSpan);
+      li.appendChild(countSpan);
+      errorList.appendChild(li);
+    });
+  }
+
+  tryAgainBtn.addEventListener("click", () => beginReady());
+  pickAnotherBtn.addEventListener("click", () => setScreen("select"));
+
+  // ---- init ----
+
+  function init() {
+    if (!Array.isArray(TESTS) || TESTS.length === 0) {
+      console.warn("TESTS is empty - add at least one test in tests.js.");
+      return;
+    }
+    populateTestSelect();
+    onTestSelected();
+    setScreen("select");
+  }
+
+  init();
+})();
