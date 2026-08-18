@@ -1,4 +1,4 @@
-# precision_teaching_typing_webapp
+# Precision Teaching Typing Webapp
 A webapp designed to give the teacher and the student control over what typing pinpoints are measured and timed.
 
 Static site, no build step, no backend. The student picks a pinpoint, types
