@@ -37,6 +37,17 @@
   const tryAgainBtn = document.getElementById("tryAgainBtn");
   const pickAnotherBtn = document.getElementById("pickAnotherBtn");
 
+  const diagramToggle = document.getElementById("diagramToggle");
+  const diagramModeControls = document.getElementById("diagramModeControls");
+  const diagramDisplay = document.getElementById("diagramDisplay");
+  const diagramImg = document.getElementById("diagramImg");
+  const diagramLegend = document.getElementById("diagramLegend");
+  const diagramModeRadios = document.querySelectorAll('input[name="diagramMode"]');
+  const DIAGRAM_SRC = {
+    bw: "chromebook_keyboard_diagram.svg",
+    color: "chromebook_keyboard_diagram_colors.svg"
+  };
+
   // ---- per-run state ----
   let currentTest = null;
   let currentDuration = null;
@@ -277,6 +288,29 @@
 
   tryAgainBtn.addEventListener("click", () => beginReady());
   pickAnotherBtn.addEventListener("click", () => setScreen("select"));
+
+  // ---- keyboard diagram ----
+
+  function getDiagramMode() {
+    return document.querySelector('input[name="diagramMode"]:checked').value;
+  }
+
+  function updateDiagram() {
+    const mode = getDiagramMode();
+    diagramImg.src = DIAGRAM_SRC[mode];
+    diagramLegend.classList.toggle("hidden", mode !== "color");
+  }
+
+  diagramToggle.addEventListener("change", () => {
+    const show = diagramToggle.checked;
+    diagramModeControls.classList.toggle("hidden", !show);
+    diagramDisplay.classList.toggle("hidden", !show);
+    if (show) updateDiagram();
+  });
+
+  diagramModeRadios.forEach((radio) => {
+    radio.addEventListener("change", updateDiagram);
+  });
 
   // ---- init ----
 
