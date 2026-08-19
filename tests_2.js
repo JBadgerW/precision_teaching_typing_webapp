@@ -76,6 +76,33 @@
 
 const TESTS = [
 
+  // ---- Benchmark: course entry & graduation probe ----
+  // A standard probe, first in the list on purpose: everyone types it on
+  // day one (baseline) and then periodically (e.g. every Friday) on its
+  // own line of the celeration chart. It samples randomly from
+  // benchmark_sentences.txt, a pool engineered so all 26 letters, capitals
+  // on both hands, and . , ' ? ! each appear often enough for the
+  // most-missed-keys and slowest-keys breakdowns to be diagnostic - those
+  // breakdowns tell you which stage drills to assign next.
+  //
+  // CLASS RULE: nobody practices on this pool. It only stays a
+  // generalization probe if the sentences remain unfamiliar.
+  //
+  // SUGGESTED GRADUATION CRITERION (a starting hypothesis - adjust it from
+  // your first cohort's charts):
+  //   - >= 150 correct keystrokes/min (~30 WPM) with <= 2 errors/min
+  //     on the 60 s timing, met on THREE separate class days, and
+  //   - the same rates held at least once on the 120 s endurance timing.
+  {
+    id: "v2-benchmark-probe",
+    name: "Benchmark: entry and graduation probe",
+    type: "wordbank",
+    source: "benchmark_sentences.txt",
+    durations: [60, 120],
+    defaultDuration: 60,
+    instructions: "Type each sentence as it appears, including capitals and punctuation. Just do your best - this one is for the chart."
+  },
+
   // ---- Stage 1: F & J (index-finger anchors) ----
   {
     id: "v2-s01-fj-drill",
