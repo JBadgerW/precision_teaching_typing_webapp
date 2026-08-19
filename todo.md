@@ -7,3 +7,8 @@ that students and teachers can review the results of their typing.
 
 - [ ] Keyboard diagrams need to be adjusted. Chromebook keyboards have their 
 symbols centered on the keys.
+
+- [ ] Colors on the keyboard also need to be adjusted. Red and green are right
+next to one another, which may be confusing for color blind students.
+
+
