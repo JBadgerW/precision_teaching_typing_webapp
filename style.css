@@ -290,6 +290,10 @@ button.selected {
   margin-bottom: 0;
 }
 
+.settings-toggle {
+  margin-top: 1rem;
+}
+
 .diagram-mode-controls {
   display: flex;
   flex-direction: column;

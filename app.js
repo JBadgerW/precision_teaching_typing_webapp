@@ -8,12 +8,6 @@
   const COUNTDOWN_STEPS = ["3", "2", "1", "GO"];
   const COUNTDOWN_STEP_MS = 700;
   const TIMER_TICK_MS = 100;
-  // Whether a wrong keystroke gets colored red (see .char.incorrect in
-  // style.css) as soon as it's typed. Not exposed as an in-app setting -
-  // flip this to false to try running without live error feedback while
-  // keeping error tracking (most-missed-keys, results) unaffected, since
-  // that's a separate, aggregate-only concern.
-  const SHOW_TYPING_ERRORS = true;
 
   const screens = {
     select: document.getElementById("screen-select"),
@@ -54,6 +48,18 @@
     bw: "chromebook_keyboard_diagram.svg",
     color: "chromebook_keyboard_diagram_colors.svg"
   };
+
+  const showErrorsToggle = document.getElementById("showErrorsToggle");
+  // Whether a wrong keystroke gets colored red (see .char.incorrect in
+  // style.css) as soon as it's typed. Correct keystrokes stay uncolored too
+  // when this is off, so turning it off means no live feedback at all, not
+  // just no red. Error tracking for the results screen (most-missed-keys,
+  // slowest keys) is unaffected either way - this only controls the live
+  // per-keystroke coloring.
+  let showTypingErrors = showErrorsToggle.checked;
+  showErrorsToggle.addEventListener("change", () => {
+    showTypingErrors = showErrorsToggle.checked;
+  });
 
   // ---- per-run state ----
   let currentTest = null;
@@ -293,7 +299,7 @@
     renderNewChars();
 
     const span = stimulusDisplay.children[prevPosition];
-    if (span && SHOW_TYPING_ERRORS) {
+    if (span && showTypingErrors) {
       // .char.correct/.char.incorrect (style.css) are compound selectors -
       // they need the "char" class to stay put, not get swapped out, or
       // neither rule ever matches.
