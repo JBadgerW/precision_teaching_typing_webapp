@@ -34,6 +34,7 @@
   const resultCorrectPerMin = document.getElementById("resultCorrectPerMin");
   const resultIncorrectPerMin = document.getElementById("resultIncorrectPerMin");
   const errorList = document.getElementById("errorList");
+  const slowKeyList = document.getElementById("slowKeyList");
   const tryAgainBtn = document.getElementById("tryAgainBtn");
   const pickAnotherBtn = document.getElementById("pickAnotherBtn");
 
@@ -293,6 +294,7 @@
     resultIncorrectPerMin.textContent = Math.round(incorrect / minutes);
 
     renderErrorBreakdown();
+    renderSlowKeyBreakdown();
     setScreen("results");
   }
 
@@ -329,6 +331,42 @@
       li.appendChild(barSpan);
       li.appendChild(countSpan);
       errorList.appendChild(li);
+    });
+  }
+
+  function renderSlowKeyBreakdown() {
+    slowKeyList.innerHTML = "";
+    const breakdown = scorer.slowKeyBreakdown(5);
+
+    if (breakdown.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No notably slow keys.";
+      slowKeyList.appendChild(li);
+      return;
+    }
+
+    const maxLatency = breakdown[0][1];
+    const MAX_BAR_REM = 8;
+    breakdown.forEach(([char, latencyMs]) => {
+      const li = document.createElement("li");
+
+      const keySpan = document.createElement("span");
+      keySpan.className = "key";
+      keySpan.textContent = char === " " ? "[space]" : char;
+
+      const barSpan = document.createElement("span");
+      barSpan.className = "bar slow-bar";
+      const widthRem = Math.max(0.5, (latencyMs / maxLatency) * MAX_BAR_REM);
+      barSpan.style.width = `${widthRem}rem`;
+
+      const countSpan = document.createElement("span");
+      countSpan.className = "count";
+      countSpan.textContent = `${Math.round(latencyMs)} ms`;
+
+      li.appendChild(keySpan);
+      li.appendChild(barSpan);
+      li.appendChild(countSpan);
+      slowKeyList.appendChild(li);
     });
   }
 

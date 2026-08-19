@@ -238,6 +238,10 @@ button.selected {
   flex-shrink: 0;
 }
 
+.error-list .bar.slow-bar {
+  background: var(--accent);
+}
+
 .error-list .count {
   color: var(--muted);
 }
