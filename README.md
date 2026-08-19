@@ -23,6 +23,11 @@ python3 -m http.server 8000
 
 then open `http://localhost:8000/`.
 
+Don't open `index.html` directly by double-clicking it (a `file://` URL) -
+tests that load their content from a separate `.txt` file use `fetch()`,
+which browsers block entirely for `file://` pages. A local server or the
+hosted GitHub Pages site both work fine.
+
 ## Deploying
 
 GitHub Pages: repo Settings → Pages → "Deploy from a branch" → `main` /

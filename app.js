@@ -168,7 +168,20 @@
         console.error(err);
         startBtn.textContent = label;
         updateStartEnabled();
-        alert("Couldn't load this test's content. Check your connection and try again.");
+        // Browsers block fetch() for file:// URLs entirely (it's not a
+        // real network error) - this is the single most common cause of
+        // this failure, so name it specifically instead of the generic
+        // "check your connection" message.
+        if (window.location.protocol === "file:") {
+          alert(
+            "Couldn't load this test's content because it's loaded from a " +
+            "separate file, which browsers block when index.html is opened " +
+            "directly. Run a local server instead - see \"Running it " +
+            "locally\" in README.md - and open the page through that."
+          );
+        } else {
+          alert("Couldn't load this test's content. Check your connection and try again.");
+        }
       });
   });
 
