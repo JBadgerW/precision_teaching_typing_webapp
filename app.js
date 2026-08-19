@@ -209,6 +209,7 @@
     scorer = createScorer(stimulusGen);
     renderedLength = 0;
     stimulusDisplay.innerHTML = "";
+    stimulusDisplay.scrollTop = 0;
     renderNewChars();
 
     runningInstructions.textContent = currentTest.instructions || "";
@@ -246,7 +247,27 @@
     const next = stimulusDisplay.children[position];
     if (next) {
       next.classList.add("current");
-      next.scrollIntoView({ block: "nearest" });
+      scrollToKeepLookahead(next);
+    }
+  }
+
+  // Keeps one full line visible below the current line, so the student can
+  // look ahead while typing (a core touch-typing technique) instead of the
+  // view only scrolling once the current line is the last one visible.
+  // scrollIntoView({ block: "nearest" }) doesn't support this - it only
+  // scrolls once the target itself goes out of view, which means the view
+  // wouldn't scroll until the line *after* the current one is reached.
+  function scrollToKeepLookahead(currentSpan) {
+    const containerRect = stimulusDisplay.getBoundingClientRect();
+    const spanRect = currentSpan.getBoundingClientRect();
+    const lineHeight = parseFloat(getComputedStyle(stimulusDisplay).lineHeight);
+
+    const spanTop = spanRect.top - containerRect.top + stimulusDisplay.scrollTop;
+    const desiredVisibleBottom = spanTop + lineHeight * 2; // current line + one lookahead line
+    const visibleBottom = stimulusDisplay.scrollTop + stimulusDisplay.clientHeight;
+
+    if (desiredVisibleBottom > visibleBottom) {
+      stimulusDisplay.scrollTop += desiredVisibleBottom - visibleBottom;
     }
   }
 
