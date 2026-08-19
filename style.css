@@ -98,6 +98,12 @@ select {
   min-height: 1.5em;
 }
 
+.assessment-note {
+  color: var(--muted);
+  font-style: italic;
+  margin: -0.25rem 0 0.75rem;
+}
+
 .duration-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -219,6 +225,12 @@ button.selected {
   margin: 0;
   font-weight: 700;
   font-size: 1.2rem;
+}
+
+.session-compare {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: -0.5rem 0 1rem;
 }
 
 .review-section {

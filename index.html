@@ -25,6 +25,7 @@
     <select id="testSelect"></select>
 
     <p id="testInstructions" class="instructions"></p>
+    <p id="assessmentNote" class="assessment-note hidden">This is an assessment pinpoint — live feedback is turned off automatically.</p>
 
     <div id="durationButtons" class="duration-buttons" role="group" aria-label="Timing"></div>
 
@@ -51,7 +52,10 @@
       <dt>Incorrect</dt><dd id="resultIncorrect"></dd>
       <dt>Correct / min</dt><dd id="resultCorrectPerMin"></dd>
       <dt>Incorrect / min</dt><dd id="resultIncorrectPerMin"></dd>
+      <dt id="resultAimLabel" class="hidden">Aim</dt><dd id="resultAim" class="hidden"></dd>
     </dl>
+
+    <p id="sessionCompare" class="session-compare hidden"></p>
 
     <div id="reviewSection" class="review-section hidden">
       <h3>Your typing</h3>
@@ -96,14 +100,14 @@
   <div id="diagramLegend" class="diagram-legend hidden">
     <h3>Which keys belong to which finger</h3>
     <ul>
-      <li><span class="swatch" style="background:#ff6666"></span>Left pinky</li>
-      <li><span class="swatch" style="background:aqua"></span>Right index finger</li>
-      <li><span class="swatch" style="background:#aaffaa"></span>Left ring finger</li>
-      <li><span class="swatch" style="background:#ffbb00"></span>Right middle finger</li>
-      <li><span class="swatch" style="background:#aaaaff"></span>Left middle finger</li>
-      <li><span class="swatch" style="background:pink"></span>Right ring finger</li>
-      <li><span class="swatch" style="background:#fafacc"></span>Left index finger</li>
-      <li><span class="swatch" style="background:#99ccff"></span>Right pinky</li>
+      <li><span class="swatch" style="background:#000000"></span>Left pinky</li>
+      <li><span class="swatch" style="background:#56b4e9"></span>Right index finger</li>
+      <li><span class="swatch" style="background:#009e73"></span>Left ring finger</li>
+      <li><span class="swatch" style="background:#e69f00"></span>Right middle finger</li>
+      <li><span class="swatch" style="background:#0072b2"></span>Left middle finger</li>
+      <li><span class="swatch" style="background:#cc79a7"></span>Right ring finger</li>
+      <li><span class="swatch" style="background:#f0e442"></span>Left index finger</li>
+      <li><span class="swatch" style="background:#d55e00"></span>Right pinky</li>
     </ul>
   </div>
 </div>

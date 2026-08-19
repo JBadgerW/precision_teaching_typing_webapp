@@ -29,6 +29,18 @@
 //                     to repeat. Good for large sentence lists or literature
 //                     passages that are awkward to paste inline as a
 //                     quoted JS string.
+//   aim              optional. { correctPerMin: <number>, maxIncorrectPerMin:
+//                     <number> }. Shown to the student on the results screen
+//                     next to their own rate, e.g. "60+ correct/min, <=2
+//                     err/min". A reference point, not a pass/fail gate - no
+//                     color coding is applied (see todo.md re: colorblind-
+//                     safe red/green).
+//   assessment       optional boolean. When true, this pinpoint is a probe
+//                     (the benchmark or a checkpoint): live error feedback
+//                     is forced off for the run regardless of the student's
+//                     "Show typing errors" setting, so every administration
+//                     of the probe is measured under the same no-feedback
+//                     condition.
 //
 // -----------------------------------------------------------------------
 // How this revision differs from the original tests.js:
@@ -63,15 +75,17 @@
 //     filler words. Every word uses only letters introduced up through its
 //     stage.
 //
-// SUGGESTED FLUENCY AIMS (teacher reference only - deliberately not shown
-// to students). These are starting hypotheses, not established PT aims;
-// let each student's celeration chart drive the real decisions.
-//   Letter drills (stages 1-15):  ~50-70 correct/min, <=2 errors/min,
-//     before moving to the next stage. Early stages may sit nearer 40.
-//   Word banks & checkpoints:     ~60-80 correct keystrokes/min,
-//     <=2 errors/min.
-//   Shift/punctuation/sentences:  ~80-100 correct keystrokes/min,
-//     <=2 errors/min, sustained across a 60 s timing.
+// FLUENCY AIMS. Every pinpoint below carries an `aim` field, shown to the
+// student on the results screen next to their own rate. These are starting
+// hypotheses, not established PT standards - tune them from your own
+// students' celeration charts once you have data. The tiers used here:
+//   Stage 1-5 drills (earliest acquisition): 40 correct/min, <=2 err/min.
+//   Stage 6-15 drills:                       60 correct/min, <=2 err/min.
+//   Word banks & checkpoint probes:          70 correct/min, <=2 err/min.
+//   Shift/punctuation/sentences/extras:      90 correct/min, <=2 err/min.
+//   Benchmark probe:                        150 correct/min, <=2 err/min.
+// The seven probe pinpoints (the benchmark and the three checkpoints) also
+// carry `assessment: true` - see the field reference above.
 // -----------------------------------------------------------------------
 
 const TESTS = [
@@ -100,7 +114,9 @@ const TESTS = [
     source: "benchmark_sentences.txt",
     durations: [60, 120],
     defaultDuration: 60,
-    instructions: "Type each sentence as it appears, including capitals and punctuation. Just do your best - this one is for the chart."
+    instructions: "Type each sentence as it appears, including capitals and punctuation. Just do your best - this one is for the chart.",
+    aim: { correctPerMin: 150, maxIncorrectPerMin: 2 },
+    assessment: true
   },
 
   // ---- Stage 1: F & J (index-finger anchors) ----
@@ -111,7 +127,8 @@ const TESTS = [
     content: ["f", "j", "ff", "jj", "fj", "jf"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
-    instructions: "Type each letter or pair exactly as shown, with a space after each group. Fingers return to f and j every time."
+    instructions: "Type each letter or pair exactly as shown, with a space after each group. Fingers return to f and j every time.",
+    aim: { correctPerMin: 40, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 2: D & K (middle fingers) ----
@@ -122,7 +139,8 @@ const TESTS = [
     content: ["d", "k", "dd", "kk", "dk", "kd", "fd", "jk", "kf", "dj"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
-    instructions: "Type each group as shown. New keys d and k, mixed with f and j review."
+    instructions: "Type each group as shown. New keys d and k, mixed with f and j review.",
+    aim: { correctPerMin: 40, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 3: S & L (ring fingers) ----
@@ -133,7 +151,8 @@ const TESTS = [
     content: ["s", "l", "ss", "ll", "sl", "ls", "sd", "lk", "fs", "jl"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 10,
-    instructions: "Type each group as shown. New keys s and l, mixed with d and k review."
+    instructions: "Type each group as shown. New keys s and l, mixed with d and k review.",
+    aim: { correctPerMin: 40, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 4: A & ; (pinky fingers) - first real words ----
@@ -144,7 +163,8 @@ const TESTS = [
     content: ["a", ";", "aa", ";;", "a;", ";a", "as", "l;", "fa", "j;"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. New keys a and semicolon, mixed with s and l review."
+    instructions: "Type each group as shown. New keys a and semicolon, mixed with s and l review.",
+    aim: { correctPerMin: 40, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s04-a-semicolon-words",
@@ -153,7 +173,8 @@ const TESTS = [
     content: ["as", "all", "ask", "add", "dad", "sad", "lad", "fall", "falls", "salad", "flask", "dads"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 5: G & H (index reach to the middle) - home row complete ----
@@ -164,7 +185,8 @@ const TESTS = [
     content: ["g", "h", "gg", "hh", "gh", "hg", "fg", "jh", "ah", "ha"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. New keys g and h. Home row is now complete."
+    instructions: "Type each group as shown. New keys g and h. Home row is now complete.",
+    aim: { correctPerMin: 40, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s05-gh-words",
@@ -173,7 +195,8 @@ const TESTS = [
     content: ["had", "has", "gas", "glad", "hall", "half", "flag", "flash", "glass", "shall", "dash", "hash"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Checkpoint A: home row review (retention probe) ----
@@ -186,7 +209,9 @@ const TESTS = [
     content: ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "Random letters from the whole home row. Type each one as it appears."
+    instructions: "Random letters from the whole home row. Type each one as it appears.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
   {
     id: "v2-checkpoint-a-words",
@@ -195,7 +220,9 @@ const TESTS = [
     content: ["as", "all", "had", "has", "ask", "dad", "sad", "glad", "fall", "salad", "flag", "shall", "glass", "half", "dash", "flask"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "A mix of every home-row word so far. Type them as they appear."
+    instructions: "A mix of every home-row word so far. Type them as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
 
   // ---- Stage 6: E & I (top row begins - highest-payoff vowels) ----
@@ -206,7 +233,8 @@ const TESTS = [
     content: ["e", "i", "ee", "ii", "ei", "ie", "ed", "ik", "de", "ki"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown, reaching up from d and k."
+    instructions: "Type each group as shown, reaching up from d and k.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s06-ei-words",
@@ -215,7 +243,8 @@ const TESTS = [
     content: ["is", "his", "if", "he", "she", "did", "like", "said", "life", "side", "held", "idea"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 7: R & U (index fingers, reach up) ----
@@ -226,7 +255,8 @@ const TESTS = [
     content: ["r", "u", "rr", "uu", "ru", "ur", "fr", "ju", "rf", "uj"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown, reaching up from f and j."
+    instructions: "Type each group as shown, reaching up from f and j.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s07-ru-words",
@@ -235,7 +265,8 @@ const TESTS = [
     content: ["are", "her", "us", "use", "red", "sure", "here", "read", "girl", "hair", "fire", "rush"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 8: T & Y (index fingers, inward stretch) ----
@@ -246,7 +277,8 @@ const TESTS = [
     content: ["t", "y", "tt", "yy", "ty", "yt", "ft", "jy", "tf", "yj"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown."
+    instructions: "Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s08-ty-words",
@@ -255,7 +287,8 @@ const TESTS = [
     content: ["the", "that", "this", "it", "at", "they", "there", "yes", "get", "just", "little", "try"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 9: W & O (ring fingers, reach up) ----
@@ -266,7 +299,8 @@ const TESTS = [
     content: ["w", "o", "ww", "oo", "wo", "ow", "sw", "lo", "ws", "ol"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown."
+    instructions: "Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s09-wo-words",
@@ -275,7 +309,8 @@ const TESTS = [
     content: ["to", "of", "do", "so", "we", "you", "was", "what", "with", "for", "out", "would"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 10: N & B (index fingers, reach down) ----
@@ -288,7 +323,8 @@ const TESTS = [
     content: ["n", "b", "nn", "bb", "nb", "bn", "jn", "fb", "nj", "bf"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown, reaching down and in from f and j."
+    instructions: "Type each group as shown, reaching down and in from f and j.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s10-nb-words",
@@ -297,7 +333,8 @@ const TESTS = [
     content: ["and", "in", "on", "an", "not", "but", "one", "new", "now", "then", "when", "than"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Checkpoint B: twenty keys (retention probe) ----
@@ -309,7 +346,9 @@ const TESTS = [
     content: ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "e", "i", "r", "u", "t", "y", "w", "o", "n", "b"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "Random letters from every key learned so far. Type each one as it appears."
+    instructions: "Random letters from every key learned so far. Type each one as it appears.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
   {
     id: "v2-checkpoint-b-words",
@@ -318,7 +357,9 @@ const TESTS = [
     content: ["the", "and", "to", "of", "in", "is", "you", "that", "it", "was", "for", "with", "on", "not", "this", "but", "are", "at", "one", "when"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "The most common English words. Type them as they appear."
+    instructions: "The most common English words. Type them as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
 
   // ---- Stage 11: V & M (index fingers, reach down) ----
@@ -329,7 +370,8 @@ const TESTS = [
     content: ["v", "m", "vv", "mm", "vm", "mv", "fv", "jm", "vf", "mj"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown, reaching down from f and j."
+    instructions: "Type each group as shown, reaching down from f and j.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s11-vm-words",
@@ -338,7 +380,8 @@ const TESTS = [
     content: ["me", "my", "am", "more", "some", "time", "them", "from", "have", "very", "over", "make"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 12: C & , (middle fingers, reach down) ----
@@ -349,7 +392,8 @@ const TESTS = [
     content: ["c", ",", "cc", ",,", "c,", "dc", "k,", "cd", ",k"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. New keys c and comma."
+    instructions: "Type each group as shown. New keys c and comma.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s12-c-comma-words",
@@ -358,7 +402,8 @@ const TESTS = [
     content: ["can", "come", "could", "much", "such", "each", "which", "because", "once", "call", "nice", "back"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 13: Q & P (pinky fingers) - top row complete ----
@@ -369,7 +414,8 @@ const TESTS = [
     content: ["q", "p", "qq", "pp", "qp", "pq", "aq", ";p", "qa", "p;"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. Top row is now complete."
+    instructions: "Type each group as shown. Top row is now complete.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s13-qp-words",
@@ -378,7 +424,8 @@ const TESTS = [
     content: ["up", "people", "put", "part", "play", "place", "help", "keep", "stop", "open", "quite", "quick"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 14: X & . (ring fingers, reach down) ----
@@ -389,7 +436,8 @@ const TESTS = [
     content: ["x", ".", "xx", "..", "x.", "sx", "l.", "xs", ".l"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. New keys x and period."
+    instructions: "Type each group as shown. New keys x and period.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s14-x-period-words",
@@ -398,7 +446,8 @@ const TESTS = [
     content: ["six", "fix", "mix", "next", "box", "text", "extra", "exact"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 15: Z & / (pinky fingers, reach down) - all 26 letters ----
@@ -409,7 +458,8 @@ const TESTS = [
     content: ["z", "/", "zz", "//", "z/", "az", ";/", "za", "/;"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each group as shown. All 26 letters are now covered."
+    instructions: "Type each group as shown. All 26 letters are now covered.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s15-z-slash-words",
@@ -418,7 +468,8 @@ const TESTS = [
     content: ["size", "zoo", "prize", "quiz", "lazy", "crazy", "zero", "dozen"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the words as they appear."
+    instructions: "Type the words as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Checkpoint C: full alphabet (retention probe) ----
@@ -429,7 +480,9 @@ const TESTS = [
     content: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "Random letters from the whole alphabet. Type each one as it appears."
+    instructions: "Random letters from the whole alphabet. Type each one as it appears.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
   {
     id: "v2-checkpoint-c-words",
@@ -438,7 +491,9 @@ const TESTS = [
     content: ["they", "have", "from", "which", "would", "people", "because", "time", "make", "know", "think", "over", "next", "quick", "size", "very"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "Common words drawing on the whole alphabet. Type them as they appear."
+    instructions: "Common words drawing on the whole alphabet. Type them as they appear.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
   },
 
   // ---- Stage 16: Shift & capitals ----
@@ -449,7 +504,8 @@ const TESTS = [
     content: ["Ff", "Jj", "Dd", "Kk", "Ss", "Ll", "Aa", "Hh", "Ee", "Tt"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Capital then lowercase. Use the shift key on the opposite hand from the letter."
+    instructions: "Capital then lowercase. Use the shift key on the opposite hand from the letter.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
   // Names split evenly between left-hand capitals (right shift) and
   // right-hand capitals (left shift), so both shift keys get practice.
@@ -460,7 +516,8 @@ const TESTS = [
     content: ["Ben", "Grace", "Sara", "Emma", "Fred", "Jack", "Kevin", "Max", "Nora", "Liam"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type each name with a capital first letter."
+    instructions: "Type each name with a capital first letter.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 17: Apostrophes & sentence punctuation ----
@@ -471,7 +528,8 @@ const TESTS = [
     content: ["Really?", "Okay.", "Wait!", "Yes!", "No.", "Why?"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 15,
-    instructions: "Type each word with its capital and end punctuation."
+    instructions: "Type each word with its capital and end punctuation.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s17-punctuation-words",
@@ -480,7 +538,8 @@ const TESTS = [
     content: ["can't", "don't", "won't", "isn't", "it's", "didn't", "that's", "I'm"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type each contraction, including the apostrophe."
+    instructions: "Type each contraction, including the apostrophe.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
 
   // ---- Stage 18: Full sentences (composition / generalization probes) ----
@@ -491,7 +550,8 @@ const TESTS = [
     content: "The quick brown fox jumps over the lazy dog.",
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the sentence, including capitals and punctuation."
+    instructions: "Type the sentence, including capitals and punctuation.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s18-sentence-seashells",
@@ -500,7 +560,8 @@ const TESTS = [
     content: "She sells seashells by the seashore.",
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the sentence, including capitals and punctuation."
+    instructions: "Type the sentence, including capitals and punctuation.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-s18-sentence-stars",
@@ -509,7 +570,8 @@ const TESTS = [
     content: "Bright stars filled the quiet night sky.",
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
-    instructions: "Type the sentence, including capitals and punctuation."
+    instructions: "Type the sentence, including capitals and punctuation.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
 
   // ---- Extra: beyond the 18-stage curriculum ----
@@ -522,7 +584,8 @@ const TESTS = [
     source: "sentences_top_english_words.txt",
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
-    instructions: "Type each sentence as it appears, including capitals and punctuation."
+    instructions: "Type each sentence as it appears, including capitals and punctuation.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   },
   {
     id: "v2-extra-passage-alice-in-wonderland",
@@ -531,6 +594,7 @@ const TESTS = [
     source: "passage_alice_in_wonderland.txt",
     durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
-    instructions: "Type the passage. If you reach the end before time is up, it repeats from the start."
+    instructions: "Type the passage. If you reach the end before time is up, it repeats from the start.",
+    aim: { correctPerMin: 90, maxIncorrectPerMin: 2 }
   }
 ];

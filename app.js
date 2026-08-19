@@ -18,6 +18,7 @@
 
   const testSelect = document.getElementById("testSelect");
   const testInstructions = document.getElementById("testInstructions");
+  const assessmentNote = document.getElementById("assessmentNote");
   const durationButtons = document.getElementById("durationButtons");
   const startBtn = document.getElementById("startBtn");
 
@@ -35,6 +36,9 @@
   const resultIncorrect = document.getElementById("resultIncorrect");
   const resultCorrectPerMin = document.getElementById("resultCorrectPerMin");
   const resultIncorrectPerMin = document.getElementById("resultIncorrectPerMin");
+  const resultAimLabel = document.getElementById("resultAimLabel");
+  const resultAim = document.getElementById("resultAim");
+  const sessionCompare = document.getElementById("sessionCompare");
   const errorList = document.getElementById("errorList");
   const slowKeyList = document.getElementById("slowKeyList");
   const tryAgainBtn = document.getElementById("tryAgainBtn");
@@ -62,6 +66,26 @@
   showErrorsToggle.addEventListener("change", () => {
     showTypingErrors = showErrorsToggle.checked;
   });
+
+  // Live feedback is forced off for assessment pinpoints (the benchmark and
+  // the checkpoints) regardless of the student's own toggle, so every
+  // administration of a probe is measured under the same no-feedback
+  // condition. The checkbox's stored preference is untouched - it's simply
+  // overridden while an assessment pinpoint is selected (see
+  // onTestSelected, which also disables the checkbox as a visible cue).
+  function liveFeedbackEnabled() {
+    return !(currentTest && currentTest.assessment) && showTypingErrors;
+  }
+
+  // Session-only record of the last and best correct/incorrect-per-minute
+  // rates for each pinpoint+duration combo. Never written to storage - a
+  // page reload clears it, consistent with the app recording nothing (see
+  // the file header). Keyed by duration too, since comparing a 10s sprint
+  // to a 60s sprint on the same pinpoint isn't a fair "best".
+  const sessionStats = new Map();
+  function sessionStatsKey(test, duration) {
+    return `${test.id}::${duration}`;
+  }
 
   // ---- per-run state ----
   let currentTest = null;
@@ -137,6 +161,11 @@
   function onTestSelected() {
     currentTest = getSelectedTest();
     testInstructions.textContent = currentTest && currentTest.instructions ? currentTest.instructions : "";
+
+    const isAssessment = !!(currentTest && currentTest.assessment);
+    assessmentNote.classList.toggle("hidden", !isAssessment);
+    showErrorsToggle.disabled = isAssessment;
+
     renderDurationButtons(currentTest);
     updateStartEnabled();
   }
@@ -304,7 +333,7 @@
     renderNewChars();
 
     const span = stimulusDisplay.children[prevPosition];
-    if (span && showTypingErrors) {
+    if (span && liveFeedbackEnabled()) {
       // .char.correct/.char.incorrect (style.css) are compound selectors -
       // they need the "char" class to stay put, not get swapped out, or
       // neither rule ever matches.
@@ -346,13 +375,17 @@
     const minutes = currentDuration / 60;
     const correct = scorer.correctCount;
     const incorrect = scorer.incorrectCount;
+    const correctPerMin = Math.round(correct / minutes);
+    const incorrectPerMin = Math.round(incorrect / minutes);
 
     resultTime.textContent = `${currentDuration}s`;
     resultCorrect.textContent = correct;
     resultIncorrect.textContent = incorrect;
-    resultCorrectPerMin.textContent = Math.round(correct / minutes);
-    resultIncorrectPerMin.textContent = Math.round(incorrect / minutes);
+    resultCorrectPerMin.textContent = correctPerMin;
+    resultIncorrectPerMin.textContent = incorrectPerMin;
 
+    renderAim(currentTest, correctPerMin, incorrectPerMin);
+    renderSessionCompare(currentTest, currentDuration, correctPerMin, incorrectPerMin);
     renderErrorBreakdown();
     renderSlowKeyBreakdown();
     renderReview();
@@ -360,15 +393,57 @@
     // Must come after setScreen(): stimulusDisplay has no CSS layout box
     // while screen-results is still hidden, so this would be a silent
     // no-op any earlier (same reasoning as the beginRunning() scroll reset).
-    if (showTypingErrors) stimulusDisplay.scrollTop = 0;
+    if (liveFeedbackEnabled()) stimulusDisplay.scrollTop = 0;
+  }
+
+  // Shows the pinpoint's suggested aim (if it has one) next to the
+  // student's own rate. A reference point only - no color-coded met/not-met
+  // indicator, since red/green is already flagged as a colorblind-access
+  // problem elsewhere in this app (see todo.md).
+  function renderAim(test, correctPerMin, incorrectPerMin) {
+    if (!test || !test.aim) {
+      resultAimLabel.classList.add("hidden");
+      resultAim.classList.add("hidden");
+      return;
+    }
+    resultAim.textContent = `${test.aim.correctPerMin}+ correct/min, ≤${test.aim.maxIncorrectPerMin} err/min`;
+    resultAimLabel.classList.remove("hidden");
+    resultAim.classList.remove("hidden");
+  }
+
+  // Shows this session's previous attempt and running best for this exact
+  // pinpoint+duration, then records the current attempt. Hidden entirely on
+  // the first attempt of a pinpoint+duration this session - there's nothing
+  // to compare against yet.
+  function renderSessionCompare(test, duration, correctPerMin, incorrectPerMin) {
+    const key = sessionStatsKey(test, duration);
+    const prev = sessionStats.get(key);
+
+    const updated = {
+      lastCorrect: correctPerMin,
+      lastIncorrect: incorrectPerMin,
+      bestCorrect: prev ? Math.max(prev.bestCorrect, correctPerMin) : correctPerMin,
+      bestIncorrect: prev ? Math.min(prev.bestIncorrect, incorrectPerMin) : incorrectPerMin
+    };
+    sessionStats.set(key, updated);
+
+    if (!prev) {
+      sessionCompare.classList.add("hidden");
+      return;
+    }
+    sessionCompare.textContent =
+      `This session - last: ${prev.lastCorrect}/min correct, ${prev.lastIncorrect}/min incorrect ` +
+      `· best: ${updated.bestCorrect}/min correct, ${updated.bestIncorrect}/min incorrect`;
+    sessionCompare.classList.remove("hidden");
   }
 
   // Only when typing errors are shown live does the typed passage carry
   // useful review information (right/wrong coloring) - otherwise every
   // character looks identical and there's nothing to review.
   function renderReview() {
-    reviewSection.classList.toggle("hidden", !showTypingErrors);
-    if (showTypingErrors) reviewSection.appendChild(stimulusDisplay);
+    const enabled = liveFeedbackEnabled();
+    reviewSection.classList.toggle("hidden", !enabled);
+    if (enabled) reviewSection.appendChild(stimulusDisplay);
   }
 
   function renderErrorBreakdown() {
