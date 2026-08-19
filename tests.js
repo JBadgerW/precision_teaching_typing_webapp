@@ -390,7 +390,7 @@ const TESTS = [
     name: "Extra: Sentences (common words)",
     type: "wordbank",
     source: "sentences_top_english_words.txt",
-    durations: [30, 60, 120],
+    durations: [10, 15, 20, 30, 60],
     defaultDuration: 60,
     instructions: "Type each sentence as it appears, including capitals and punctuation."
   },
@@ -399,7 +399,7 @@ const TESTS = [
     name: "Extra: Passage - Alice in Wonderland",
     type: "text",
     source: "passage_alice_in_wonderland.txt",
-    durations: [30, 60, 120],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "Type the passage. If you reach the end before time is up, it repeats from the start."
   }

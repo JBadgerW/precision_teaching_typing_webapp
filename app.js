@@ -209,13 +209,17 @@
     scorer = createScorer(stimulusGen);
     renderedLength = 0;
     stimulusDisplay.innerHTML = "";
-    stimulusDisplay.scrollTop = 0;
     renderNewChars();
 
     runningInstructions.textContent = currentTest.instructions || "";
     hiddenInput.value = "";
 
     setScreen("running");
+    // Must come after setScreen(), not before: while the running screen is
+    // still hidden (display: none), stimulusDisplay has no CSS layout box,
+    // so setting scrollTop is a silent no-op and the leftover scroll
+    // position from the previous run survives.
+    stimulusDisplay.scrollTop = 0;
     updateCursor(0);
 
     running = true;
