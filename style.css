@@ -31,12 +31,13 @@ header h1 {
 }
 
 .layout {
-  max-width: 54rem;
+  max-width: 62rem;
   margin: 0 auto;
   padding: 0 1rem 3rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
+    "timer"
     "main"
     "controls"
     "diagram";
@@ -46,15 +47,26 @@ header h1 {
 
 @media (min-width: 56rem) {
   .layout {
-    grid-template-columns: minmax(0, 40rem) minmax(11rem, 13rem);
+    grid-template-columns: minmax(4.5rem, 6rem) minmax(0, 40rem) minmax(11rem, 13rem);
     grid-template-areas:
-      "main    controls"
-      "diagram .";
+      "timer main    controls"
+      ".     diagram .";
   }
 }
 
 main {
   grid-area: main;
+}
+
+.timer-panel {
+  grid-area: timer;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screen {
@@ -144,7 +156,6 @@ button.selected {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
 .typing-area {

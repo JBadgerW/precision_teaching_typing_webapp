@@ -23,7 +23,7 @@
 
   const countdownDisplay = document.getElementById("countdownDisplay");
 
-  const runningInstructions = document.getElementById("runningInstructions");
+  const timerPanel = document.getElementById("timerPanel");
   const timerDisplay = document.getElementById("timerDisplay");
   const stimulusDisplay = document.getElementById("stimulusDisplay");
   const hiddenInput = document.getElementById("hiddenInput");
@@ -62,6 +62,10 @@
   function setScreen(name) {
     Object.values(screens).forEach((el) => el.classList.add("hidden"));
     screens[name].classList.remove("hidden");
+    // The timer panel lives outside the .screen sections (it's a sidebar,
+    // not part of any one screen's markup), so it needs its own visibility
+    // toggle in sync with screen changes instead of getting one for free.
+    timerPanel.classList.toggle("hidden", name !== "running");
   }
 
   // ---- select screen ----
@@ -211,7 +215,6 @@
     stimulusDisplay.innerHTML = "";
     renderNewChars();
 
-    runningInstructions.textContent = currentTest.instructions || "";
     hiddenInput.value = "";
 
     setScreen("running");
