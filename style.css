@@ -221,6 +221,14 @@ button.selected {
   font-size: 1.2rem;
 }
 
+.review-section {
+  margin: 1rem 0;
+}
+
+.review-section h3 {
+  margin-top: 0;
+}
+
 .error-list {
   list-style: none;
   padding: 0;

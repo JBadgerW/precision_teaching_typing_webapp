@@ -25,9 +25,11 @@
 
   const timerPanel = document.getElementById("timerPanel");
   const timerDisplay = document.getElementById("timerDisplay");
+  const typingArea = document.getElementById("typingArea");
   const stimulusDisplay = document.getElementById("stimulusDisplay");
   const hiddenInput = document.getElementById("hiddenInput");
 
+  const reviewSection = document.getElementById("reviewSection");
   const resultTime = document.getElementById("resultTime");
   const resultCorrect = document.getElementById("resultCorrect");
   const resultIncorrect = document.getElementById("resultIncorrect");
@@ -224,6 +226,9 @@
     stimulusGen = createStimulusGenerator(currentTest, currentDuration);
     scorer = createScorer(stimulusGen);
     renderedLength = 0;
+    // A previous run's results screen may have moved stimulusDisplay into
+    // reviewSection (see showResults) - claim it back before typing starts.
+    typingArea.appendChild(stimulusDisplay);
     stimulusDisplay.innerHTML = "";
     renderNewChars();
 
@@ -350,7 +355,20 @@
 
     renderErrorBreakdown();
     renderSlowKeyBreakdown();
+    renderReview();
     setScreen("results");
+    // Must come after setScreen(): stimulusDisplay has no CSS layout box
+    // while screen-results is still hidden, so this would be a silent
+    // no-op any earlier (same reasoning as the beginRunning() scroll reset).
+    if (showTypingErrors) stimulusDisplay.scrollTop = 0;
+  }
+
+  // Only when typing errors are shown live does the typed passage carry
+  // useful review information (right/wrong coloring) - otherwise every
+  // character looks identical and there's nothing to review.
+  function renderReview() {
+    reviewSection.classList.toggle("hidden", !showTypingErrors);
+    if (showTypingErrors) reviewSection.appendChild(stimulusDisplay);
   }
 
   function renderErrorBreakdown() {
