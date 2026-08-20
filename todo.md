@@ -46,3 +46,5 @@ even if the active feedback option is not checked.
 
 - [X] 11. I need a nice table for recording student achievement at each level
 so they can keep track of the whole course.
+
+- [ ] 12. Research the colors for the diagram that will accord with the correct palette for accommodation of color blind people. When I made the current version grayscale, some of the bands were indistinguishable. Is that relevant? 
