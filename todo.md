@@ -47,4 +47,4 @@ even if the active feedback option is not checked.
 - [X] 11. I need a nice table for recording student achievement at each level
 so they can keep track of the whole course.
 
-- [ ] 12. Research the colors for the diagram that will accord with the correct palette for accommodation of color blind people. When I made the current version grayscale, some of the bands were indistinguishable. Is that relevant? 
+- [X] 12. According to Chat GPT, grayscale isn't actually a good simulation of colorblindness, so the diagram is probably good as is. ~Research the colors for the diagram that will accord with the correct palette for accommodation of color blind people. When I made the current version grayscale, some of the bands were indistinguishable. Is that relevant?~ 
