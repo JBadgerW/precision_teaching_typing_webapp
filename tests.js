@@ -37,10 +37,10 @@
 //                     safe red/green).
 //   assessment       optional boolean. When true, this pinpoint is a probe
 //                     (the benchmark or a checkpoint): live error feedback
-//                     is forced off for the run regardless of the student's
+//                     is forced on for the run regardless of the student's
 //                     "Show typing errors" setting, so every administration
-//                     of the probe is measured under the same no-feedback
-//                     condition.
+//                     of the probe is measured under the same condition,
+//                     matching real typing (errors are visible, not silent).
 //
 // -----------------------------------------------------------------------
 // How this revision differs from the original tests.js:
@@ -207,7 +207,7 @@ const TESTS = [
     name: "Checkpoint A: home row letters",
     type: "wordbank",
     content: ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"],
-    durations: [10, 15, 20, 30, 60],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "Random letters from the whole home row. Type each one as it appears.",
     aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
@@ -344,7 +344,7 @@ const TESTS = [
     name: "Checkpoint B: all keys so far",
     type: "wordbank",
     content: ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "e", "i", "r", "u", "t", "y", "w", "o", "n", "b"],
-    durations: [10, 15, 20, 30, 60],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "Random letters from every key learned so far. Type each one as it appears.",
     aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
@@ -355,7 +355,7 @@ const TESTS = [
     name: "Checkpoint B: most common words",
     type: "wordbank",
     content: ["the", "and", "to", "of", "in", "is", "you", "that", "it", "was", "for", "with", "on", "not", "this", "but", "are", "at", "one", "when"],
-    durations: [10, 15, 20, 30, 60],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "The most common English words. Type them as they appear.",
     aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
@@ -478,7 +478,7 @@ const TESTS = [
     name: "Checkpoint C: all 26 letters",
     type: "wordbank",
     content: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
-    durations: [10, 15, 20, 30, 60],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "Random letters from the whole alphabet. Type each one as it appears.",
     aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
@@ -489,7 +489,7 @@ const TESTS = [
     name: "Checkpoint C: mixed words",
     type: "wordbank",
     content: ["they", "have", "from", "which", "would", "people", "because", "time", "make", "know", "think", "over", "next", "quick", "size", "very"],
-    durations: [10, 15, 20, 30, 60],
+    durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
     instructions: "Common words drawing on the whole alphabet. Type them as they appear.",
     aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },

@@ -67,14 +67,16 @@
     showTypingErrors = showErrorsToggle.checked;
   });
 
-  // Live feedback is forced off for assessment pinpoints (the benchmark and
+  // Live feedback is forced ON for assessment pinpoints (the benchmark and
   // the checkpoints) regardless of the student's own toggle, so every
-  // administration of a probe is measured under the same no-feedback
-  // condition. The checkbox's stored preference is untouched - it's simply
-  // overridden while an assessment pinpoint is selected (see
-  // onTestSelected, which also disables the checkbox as a visible cue).
+  // administration of a probe is measured under the same condition - and so
+  // an error doesn't go unnoticed and quietly cascade into a run of
+  // consecutive errors. Real typing has feedback; a probe should too. The
+  // checkbox's stored preference is untouched - it's simply overridden
+  // while an assessment pinpoint is selected (see onTestSelected, which
+  // also disables the checkbox as a visible cue).
   function liveFeedbackEnabled() {
-    return !(currentTest && currentTest.assessment) && showTypingErrors;
+    return (currentTest && currentTest.assessment) || showTypingErrors;
   }
 
   // Session-only record of the last and best correct/incorrect-per-minute
