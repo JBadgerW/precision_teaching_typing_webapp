@@ -41,20 +41,170 @@ principles of Precision Teaching. I'm going to use it this year (2026-2027) and
 hopefully I'll remember to record its effectiveness. You're welcome to use it
 and/or provide helpful critiques.
 
-## Running it locally
+## Running the app
 
 The easiest way to run this in its current form as is:
 
 https://jbadgerw.github.io/precision_teaching_typing_webapp/
 
-If you want to run it locally on your own machine, merely cloning the repo and
-opening `index.html` in your browser won't work. Tests that load their content 
-from a separate `.txt` file use `fetch()`, which browsers block entirely for 
-`file://` pages. A local server or the hosted GitHub Pages site both work fine.
+### Running the Web App Locally
 
+If you want to run the web app on your own computer, **merely cloning the repository 
+and opening `index.html` in your browser will not work**.
+
+Some of the tests load their content from separate `.txt` files using JavaScript's 
+`fetch()` function. For security reasons, web browsers block `fetch()` requests from 
+pages opened directly with the `file://` protocol.
+
+Instead, you need to run a small **local web server** and then access the app through 
+`http://localhost`.
+
+#### Option 1: Linux
+
+##### 1. Open a terminal
+
+Open your terminal and navigate to the directory where you cloned the repository. For 
+example:
+
+```bash
+cd ~/path/to/the/repository
 ```
+
+##### 2. Start the local web server
+
+If Python 3 is installed, run:
+
+```bash
 python3 -m http.server 8000
 ```
 
-then open `http://localhost:8000/` in your browser's address bar.
+You should see something similar to:
 
+```text
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+##### 3. Open the app
+
+Open your web browser and go to:
+
+**http://localhost:8000/**
+
+The web app should now load normally.
+
+##### 4. Stop the server
+
+When you are finished, return to the terminal and press:
+
+```text
+Ctrl+C
+```
+
+---
+
+#### Option 2: Windows
+
+Windows does not normally have a `python3` command available, but you can use Python 
+if it is installed.
+
+##### 1. Open Command Prompt or PowerShell
+
+Navigate to the directory where you cloned the repository. For example:
+
+```powershell
+cd C:\Users\YourName\path\to\the\repository
+```
+
+##### 2. Start the local web server
+
+Try:
+
+```powershell
+python -m http.server 8000
+```
+
+If that does not work, try:
+
+```powershell
+py -m http.server 8000
+```
+
+One of these commands should work if Python 3 is installed.
+
+You should see something similar to:
+
+```text
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+##### 3. Open the app
+
+Open your web browser and go to:
+
+**http://localhost:8000/**
+
+##### 4. Stop the server
+
+When you are finished, return to the Command Prompt or PowerShell window and press:
+
+```text
+Ctrl+C
+```
+
+##### If Python is not installed
+
+Install Python 3 first. During installation, make sure the option to **add Python to PATH** 
+is selected.
+
+After installing Python, close and reopen your Command Prompt or PowerShell window, then 
+repeat the steps above.
+
+---
+
+#### Option 3: macOS
+
+macOS can use Python 3 in essentially the same way as Linux.
+
+##### 1. Open Terminal
+
+Open the **Terminal** application and navigate to the directory where you cloned the repository:
+
+```bash
+cd /path/to/the/repository
+```
+
+##### 2. Start the local web server
+
+Run:
+
+```bash
+python3 -m http.server 8000
+```
+
+You should see something similar to:
+
+```text
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+##### 3. Open the app
+
+Open your web browser and go to:
+
+**http://localhost:8000/**
+
+##### 4. Stop the server
+
+When you are finished, return to Terminal and press:
+
+```text
+Ctrl+C
+```
+
+##### If Python is not installed
+
+Install Python 3 first. Once it is installed, open a new Terminal window and run:
+
+```bash
+python3 -m http.server 8000
+```
