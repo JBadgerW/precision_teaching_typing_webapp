@@ -42,6 +42,7 @@ Pinpoints may set `source: "somefile.txt"` instead of inline `content`; `app.js`
 
 ## Other files
 
+- `pt_style.typ` — shared Typst template for the three PDFs (`teacher_guide`, `student_guide`, `student_achievement_tracker`): fonts, a deliberately grayscale-only palette, and the page/heading/callout/table components they all import. Grayscale-only because these are meant to be photocopied in black and white — restyle by editing this file, not by re-adding color to an individual document. `charting_advice_discussion.typ` does not use it.
 - `todo.md` — the active task list; the PT-alignment section documents design decisions and their reasoning.
 - `webapp_for_typing.md` — background research on applying Precision Teaching to typing; the rationale behind the pinpoint progression.
 - `benchmark_sentences.txt` — the benchmark probe's pool, engineered so all letters, capitals, and `. , ' ? !` appear often enough to be diagnostic. Class rule: students never practice on it, or it stops being a generalization probe.

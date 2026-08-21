@@ -1,33 +1,21 @@
 // teacher_guide.typ
 // Compile with:  typst compile teacher_guide.typ
-#set document(title: "Teacher's Guide: Precision Teaching Typing", author: "Precision Teaching Typing Webapp")
-#set page(paper: "us-letter", margin: (x: 1in, y: 1in), numbering: "1")
-#set text(size: 11pt)
-#set par(justify: true)
-#set heading(numbering: "1.1")
-#show heading.where(level: 1): it => block(above: 1.6em, below: 0.8em)[#it]
+#import "pt_style.typ": *
 
-// A callout box for Precision Teaching principles.
-#let principle(title, body) = block(
-  fill: luma(245),
-  stroke: (left: 2.5pt + luma(120)),
-  inset: (x: 12pt, y: 10pt),
-  radius: 2pt,
-  width: 100%,
-)[
-  #text(weight: "bold", size: 10pt, tracking: 0.5pt)[PT PRINCIPLE — #upper(title)] \
-  #body
-]
+#show: doc.with(
+  kind: "Teacher's Guide",
+  title: "Teaching Touch Typing with Precision Teaching",
+  numbering-scheme: "1.",
+  margins: (x: 1.25in, top: 1in, bottom: 0.95in),
+)
 
-// Title block
-#align(center)[
-  #text(size: 22pt, weight: "bold", hyphenate: false)[Teaching Touch Typing \ with Precision Teaching] \
-  #v(4pt)
-  #text(size: 13pt)[A teacher's guide to the Precision Teaching Typing Webapp] \
-  #v(2pt)
-  #text(size: 10pt, fill: luma(100))[Written for the revision-2 pinpoint set (`tests.js`)]
-]
-#v(1.5em)
+#titleblock(
+  "Precision Teaching · Typing Course",
+  [Teaching Touch Typing \ with Precision Teaching],
+  subtitle: [A teacher's guide to the Precision Teaching Typing Webapp],
+  meta: [Written for the revision-2 pinpoint set (#raw("tests.js")) · For photocopying in black and white],
+)
+#v(1.8em)
 
 = What this guide is
 
@@ -39,13 +27,13 @@ The one-sentence philosophy: *the app arranges practice and counts behavior; the
 
 Precision Teaching (PT) is not a curriculum. It is a measurement and decision-making system, and it maps onto typing unusually well. The whole method is:
 
-+ *Pinpoint* a specific behavior. Not "practice typing," but "types `f` or `j` when shown either," or "types common words containing every key learned so far." Every entry in the app's test picker is one pinpoint.
++ *Pinpoint* a specific behavior. Not "practice typing," but "types #raw("f") or #raw("j") when shown either," or "types common words containing every key learned so far." Every entry in the app's test picker is one pinpoint.
 + *Arrange practice* on that pinpoint — short, frequent, focused.
 + *Time and count.* Every practice is a timed sprint. The app counts _correct keystrokes per minute_ and _incorrect keystrokes per minute_ — two separate numbers, never a percentage.
 + *Chart* both numbers daily on a Standard Celeration Chart (SCC), one chart line per pinpoint.
 + *Decide from the chart.* If corrects are accelerating and errors are low or falling, change nothing. If the picture stalls for three or four sessions, change something — and this guide tells you what to change.
 
-#principle("rate, not percentage")[
+#callout("PT Principle — Rate, not percentage")[
   A student at "90% accuracy" could be typing 9 correct per minute or 90. Percentages hide fluency. Always talk with students about their two counts: corrects per minute and errors per minute. The goal is a high, rising correct rate _with_ a low error rate — never one without the other.
 ]
 
@@ -64,7 +52,7 @@ Two design decisions to know about:
 
 *Nothing is recorded.* The app stores no data at all. This is intentional: students copy their own numbers onto their own paper charts. Self-recording and self-charting are part of the method — the chart belongs to the learner.
 
-#principle("the learner knows best")[
+#callout("PT Principle — The learner knows best")[
   In PT, the student's data — not the teacher's impression, not the curriculum's schedule — decides what happens next. When a student charts their own performance and can see their own celeration, practice stops being something done _to_ them. Let students announce their own numbers, plot their own dots, and (with your guidance) call their own next moves.
 ]
 
@@ -72,18 +60,20 @@ Two design decisions to know about:
 
 Each student needs:
 
-+ A Chromebook or other computer with the app open (the hosted URL or your local server). Remember that the file-backed tests require the app to be served over HTTP, not opened as a `file://` page.
++ A Chromebook or other computer with the app open (the hosted URL or your local server). Remember that the file-backed tests require the app to be served over HTTP, not opened as a #raw("file://") page.
 + A *Standard Celeration Chart* — the paper daily-per-minute chart. One chart can carry several pinpoints as separate lines; many teachers use one chart per student per term.
 + A pencil, and a folder to keep the chart in.
 
 Chart conventions (keep them uniform across the class so charts are readable at a glance): a *dot* for corrects per minute, an *×* for errors per minute, one column per calendar day. Connect dots across days; the slope of that line is the *celeration* — the rate of learning itself.
 
-Decide your class's *aims* before you start. The suggested starting aims (also in the comments at the top of `tests.js`) are:
+Decide your class's *aims* before you start. The suggested starting aims (also in the comments at the top of #raw("tests.js")) are:
 
 #table(
-  columns: (1fr, auto, auto, auto),
+  columns: (1.7in, 1fr, 0.8in, 1.3in),
   align: (left, center, center, center),
-  table.header([*Pinpoint type*], [*Correct/min aim*], [*Errors/min*], [*Certified at*]),
+  stroke: 0.6pt + rule,
+  inset: (x: 7pt, y: 6pt),
+  table.header(th[Pinpoint type], th[Correct/min aim], th[Errors/min], th[Certified at]),
   [Letter drills (stages 1–15)], [50–70 (early stages may sit nearer 40)], [≤ 2], [30 s],
   [Word banks], [60–80], [≤ 2], [30 s],
   [Checkpoints A–C], [60–80], [≤ 2], [60 s],
@@ -110,10 +100,10 @@ The baseline also tells you where each student starts. A student who already typ
 
 The app measures; it cannot see hands. Technique is your job, and there are only five things to watch:
 
-+ *Home position.* Fingers curved and resting on `a s d f` and `j k l ;`, thumbs on the space bar. The index fingers find the bumps on `f` and `j` without looking. Every reach starts from and returns to home.
++ *Home position.* Fingers curved and resting on #raw("a s d f") and #raw("j k l ;"), thumbs on the space bar. The index fingers find the bumps on #raw("f") and #raw("j") without looking. Every reach starts from and returns to home.
 + *Eyes on the screen, never the keyboard.* This is the single behavior that separates touch typists from hunt-and-peck typists, and the earlier you insist on it the cheaper it is. A sheet of paper taped over the hands works better than nagging.
-+ *One finger, one key.* Each key belongs to exactly one finger. If you see an index finger wandering over to `s`, stop and reset — speed built on wrong fingering caps out early and is expensive to unlearn.
-+ *Opposite-hand shift.* Capital letters typed with the shift key on the other hand (right shift for `A`, left shift for `J`). This matters from Stage 16 on.
++ *One finger, one key.* Each key belongs to exactly one finger. If you see an index finger wandering over to #raw("s"), stop and reset — speed built on wrong fingering caps out early and is expensive to unlearn.
++ *Opposite-hand shift.* Capital letters typed with the shift key on the other hand (right shift for #raw("A"), left shift for #raw("J")). This matters from Stage 16 on.
 + *Relaxed rhythm.* Wrists floating, not planted; strokes light and even. Speed is a by-product of relaxed, correct, frequent repetition — it is never something to strain for inside a single timing.
 
 Watch for these while students do their timings. A technique correction is worth more than any amount of extra practice on top of a bad habit.
@@ -125,16 +115,18 @@ The pinpoints in the picker follow this sequence. Each letter stage has a *drill
 #table(
   columns: (auto, auto, 1fr),
   align: (left, center, left),
-  table.header([*Stage*], [*New keys*], [*Notes*]),
-  [1–5], [`f j`, `d k`, `s l`, `a ;`, `g h`], [Home row, index fingers outward to pinkies. Home row complete at Stage 5.],
+  stroke: 0.6pt + rule,
+  inset: (x: 7pt, y: 6pt),
+  table.header(th[Stage], th[New keys], th[Notes]),
+  [1–5], [#raw("f j"), #raw("d k"), #raw("s l"), #raw("a ;"), #raw("g h")], [Home row, index fingers outward to pinkies. Home row complete at Stage 5.],
   [Checkpoint A], [—], [Home-row review probes: random letters, and every home-row word.],
-  [6–9], [`e i`, `r u`, `t y`, `w o`], [Top row, highest-frequency letters first.],
-  [10], [`n b`], [Deliberately early — unlocks _and, in, on, not, one, then, when, than, but_.],
+  [6–9], [#raw("e i"), #raw("r u"), #raw("t y"), #raw("w o")], [Top row, highest-frequency letters first.],
+  [10], [#raw("n b")], [Deliberately early — unlocks _and, in, on, not, one, then, when, than, but_.],
   [Checkpoint B], [—], [Twenty-key probes. The words bank is the twenty most common English words.],
-  [11–15], [`v m`, `c ,`, `q p`, `x .`, `z /`], [Remaining keys; the rarest letters come last. All 26 letters done at Stage 15.],
+  [11–15], [#raw("v m"), #raw("c ,"), #raw("q p"), #raw("x ."), #raw("z /")], [Remaining keys; the rarest letters come last. All 26 letters done at Stage 15.],
   [Checkpoint C], [—], [Full-alphabet probes: all 26 letters, and mixed common words.],
   [16], [Shift], [Capitals with the opposite-hand shift; a bank of capitalized names.],
-  [17], [`' ? !`], [Contractions and end punctuation.],
+  [17], [#raw("' ? !")], [Contractions and end punctuation.],
   [18], [Sentences], [Three full practice sentences — the composite skill.],
   [Extra], [—], [Common-word sentences and a literature passage, for students past Stage 18.],
   [Benchmark], [—], [Entry/graduation probe. Weekly, never practiced.],
@@ -147,7 +139,7 @@ How to use a stage:
 - *Chart one timing per pinpoint per day* — the best one is fine, and students trying to beat yesterday's dot is exactly the game you want. The other sprints are practice.
 - *Run the matching checkpoint* about weekly once it's unlocked, and keep older stages warm with an occasional review sprint.
 
-#principle("components before composites")[
+#callout("PT Principle — Components before composites")[
   Typing a sentence is a composite of many component behaviors: single keystrokes, key sequences, words, capitals, punctuation. Fluent components combine almost for free; weak components put a hard ceiling on the composite. When a composite (words, sentences, benchmark) stalls, the cure is nearly always found one level down — isolate the weak component, bring it to its aim, and the composite usually jumps without being practiced directly.
 ]
 
@@ -163,7 +155,7 @@ After every timing, three decisions can be read straight off the screen:
 
 *The two rates → the chart.* Corrects/min and errors/min get plotted. Everything else is diagnosis.
 
-*Most-missed keys → what to isolate.* If `r` heads the missed list day after day, the student runs the Stage 7 drill as a targeted sprint tomorrow — even if they're officially on Stage 11. Persistent misses usually mean wrong fingering: watch the hand, don't just reassign the drill.
+*Most-missed keys → what to isolate.* If #raw("r") heads the missed list day after day, the student runs the Stage 7 drill as a targeted sprint tomorrow — even if they're officially on Stage 11. Persistent misses usually mean wrong fingering: watch the hand, don't just reassign the drill.
 
 *Slowest keys → where the hesitation lives.* Slow keys are keys the student finds by searching (often with a glance at the keyboard) rather than by reflex. Treat them exactly like missed keys: isolate with the matching stage drill at 10–15 s until the hesitation disappears. Remember slow-key data is only trustworthy from longer timings.
 
@@ -186,7 +178,7 @@ Have students chart at the end of every session — it takes under a minute, and
 
   Change *one* thing at a time, and let the chart tell you within a few days whether it worked. That is the entire experimental method of PT, run at the scale of one student.
 
-#principle("flat charts indict the program, not the child")[
+#callout("PT Principle — Flat charts indict the program, not the child")[
   When a chart flatlines, PT's founding rule applies: the learner is always right — the behavior is responding lawfully to the arrangement we provided. So we change the arrangement: slice, timing, stimulus, technique, consequence. "Try harder" is not on the list.
 ]
 
@@ -209,12 +201,14 @@ The whole routine fits in about ten minutes a day, and daily-short beats weekly-
 #table(
   columns: (auto, 1fr),
   align: (left, left),
-  table.header([*Minutes*], [*Activity*]),
+  stroke: 0.6pt + rule,
+  inset: (x: 7pt, y: 6pt),
+  table.header(th[Minutes], th[Activity]),
   [1], [Settle: charts out, app open, hands to home position.],
   [2–3], [Current-stage drill: several short sprints (10–15 s), best one noted.],
   [2], [Targeted work: whatever yesterday's most-missed / slowest keys named, as isolated sprints.],
   [2–3], [Current-stage words (30 s), or the scheduled checkpoint / weekly benchmark.],
-  [1–2], [Chart the day's numbers; student states their next move ("tomorrow I isolate `r u`").],
+  [1–2], [Chart the day's numbers; student states their next move ("tomorrow I isolate #raw("r u")").],
 )
 
 = Troubleshooting
@@ -233,8 +227,9 @@ The whole routine fits in about ten minutes a day, and daily-short beats weekly-
 
 *"Can they practice at home?"* Yes — the app is free, stores nothing, and runs in any browser. Send the URL home; extra sprints only help. The chart stays the official record either way.
 
-#v(1em)
-#line(length: 100%, stroke: 0.5pt + luma(180))
-#text(size: 9pt, fill: luma(100))[
-  This guide accompanies the revision-2 pinpoint set. Suggested aims and the graduation criterion also live as comments in `tests.js`; keep the two in sync if you tune them. The app records nothing by design — the paper Standard Celeration Chart is the database, and the student is its keeper.
+#v(1.4em)
+#line(length: 100%, stroke: 0.5pt + rule)
+#v(0.4em)
+#text(size: 9pt, fill: ink-mute)[
+  This guide accompanies the revision-2 pinpoint set. Suggested aims and the graduation criterion also live as comments in #raw("tests.js"); keep the two in sync if you tune them. The app records nothing by design — the paper Standard Celeration Chart is the database, and the student is its keeper.
 ]
