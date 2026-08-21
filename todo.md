@@ -59,7 +59,7 @@ hide the raw values or else highlight the /min values. This will depend on how
 the students use it. If they are able to find the values and use them without 
 much trouble, then don't worry about it.
 
-- [ ] 14. Move the graduation test to the bottom of the list. That way it isn't 
+- [X] 14. Move the graduation test to the bottom of the list. That way it isn't 
 something the students have to bypass every day, and it's less of a temptation for 
 them. I can easily direct them to find it on day 1 to take it for benchmarking
 purposes.
@@ -74,4 +74,9 @@ keyboard diagram's finger palette.
 - [ ] 16. Add pinpoints for numbers and the symbols which lie on the same keys
 as the letters. Put these tests after the graduation test.
 
-- [ ] 17. Change the display diagram to True by default.
+- [X] 17. Change the display diagram to True by default.
+
+- [ ] 18. The words for a and ; don't have any semi-colons. How can this be 
+intelligently changed?
+
+

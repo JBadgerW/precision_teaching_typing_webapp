@@ -547,12 +547,19 @@
     diagramLegend.classList.toggle("hidden", mode !== "color");
   }
 
-  diagramToggle.addEventListener("change", () => {
+  // Single source of truth for diagram visibility is diagramToggle.checked -
+  // called on the change event and once at init, so the initial state (the
+  // checkbox defaults to checked in index.html) doesn't have to be
+  // duplicated as a separate hard-coded "hidden"/not-hidden state in the
+  // markup for the controls/display it drives.
+  function syncDiagramVisibility() {
     const show = diagramToggle.checked;
     diagramModeControls.classList.toggle("hidden", !show);
     diagramDisplay.classList.toggle("hidden", !show);
     if (show) updateDiagram();
-  });
+  }
+
+  diagramToggle.addEventListener("change", syncDiagramVisibility);
 
   diagramModeRadios.forEach((radio) => {
     radio.addEventListener("change", updateDiagram);
@@ -567,6 +574,7 @@
     }
     populateTestSelect();
     onTestSelected();
+    syncDiagramVisibility();
     setScreen("select");
   }
 
