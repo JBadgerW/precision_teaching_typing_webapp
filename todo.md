@@ -47,4 +47,24 @@ even if the active feedback option is not checked.
 - [X] 11. I need a nice table for recording student achievement at each level
 so they can keep track of the whole course.
 
-- [X] 12. According to Chat GPT, grayscale isn't actually a good simulation of colorblindness, so the diagram is probably good as is. ~Research the colors for the diagram that will accord with the correct palette for accommodation of color blind people. When I made the current version grayscale, some of the bands were indistinguishable. Is that relevant?~ 
+- [X] 12. According to ChatGPT, grayscale isn't actually a good simulation of 
+colorblindness, so the diagram is probably good as is. ~Research the colors for 
+the diagram that will accord with the correct palette for accommodation of color 
+blind people. When I made the current version grayscale, some of the bands were 
+indistinguishable. Is that relevant?~ 
+
+- [ ] 13. Do I want to highlight the characters/min and errors/min? Those pieces
+might be harder to find in the summary screen. It might make sense to either 
+hide the raw values or else highlight the /min values. This will depend on how
+the students use it. If they are able to find the values and use them without 
+much trouble, then don't worry about it.
+
+- [ ] 14. Move the graduation test to the bottom of the list. That way it isn't 
+something the students have to bypass every day, and it's less of a temptation for 
+them. I can easily direct them to find it on day 1 to take it for benchmarking
+purposes.
+
+- [ ] 15. After all that concern over colorblind access, my colors for correct
+vs incorrect are green vs red. Does that make the screen difficult to read 
+while a colorblind student is typing or while reviewing the typing for mistakes?
+Perhaps this should be changed to blue vs red?
