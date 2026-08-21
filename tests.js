@@ -160,7 +160,14 @@ const TESTS = [
     id: "v2-s04-a-semicolon-words",
     name: "Stage 4 words: A and ;",
     type: "wordbank",
-    content: ["as", "all", "ask", "add", "dad", "sad", "lad", "fall", "falls", "salad", "flask", "dads"],
+    // A semicolon never occurs inside a real word, so a bank of single
+    // words - unlike every other letter-pair stage - would silently drop
+    // the ";" half of this pinpoint during the apply-to-real-words phase.
+    // A few entries pair two already-real words with a semicolon between
+    // them (word; word) - not a full clause, since only 7 letters exist
+    // yet to write one, but typographically the same reach: finish a word,
+    // strike ; with the right pinky, space, keep going.
+    content: ["as", "all", "ask", "add", "dad", "sad", "lad", "fall", "falls", "salad", "flask", "dads", "dad; sad", "lad; all", "ask; add", "salad; flask"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear.",
@@ -409,7 +416,12 @@ const TESTS = [
     id: "v2-s12-c-comma-words",
     name: "Stage 12 words: C and ,",
     type: "wordbank",
-    content: ["can", "come", "could", "much", "such", "each", "which", "because", "once", "call", "nice", "back"],
+    // A comma never occurs inside a real word, so pure single-word entries
+    // would drop the "," half of this pinpoint (see the same fix and its
+    // rationale on v2-s04-a-semicolon-words). A few entries pair two
+    // already-real words from this same bank into a short comma-separated
+    // list - a comma's most natural use - keeping the reach in rotation.
+    content: ["can", "come", "could", "much", "such", "each", "which", "because", "once", "call", "nice", "back", "come, call", "much, such", "each, which", "once, nice"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear.",
@@ -457,7 +469,14 @@ const TESTS = [
     id: "v2-s14-x-period-words",
     name: "Stage 14 words: X and .",
     type: "wordbank",
-    content: ["six", "fix", "mix", "next", "box", "text", "extra", "exact"],
+    // A period never occurs inside a real word, so pure single-word entries
+    // would drop the "." half of this pinpoint (see v2-s04-a-semicolon-words
+    // for the same fix and its rationale). A few entries pair two
+    // already-real words from this bank as two short sentence-like
+    // fragments. Real capitalized sentences with periods arrive properly
+    // at Stage 18, once shift (Stage 16) is taught - these just keep the
+    // period-then-space reach in rotation until then.
+    content: ["six", "fix", "mix", "next", "box", "text", "extra", "exact", "fix. mix", "six. box", "next. text", "extra. exact"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear.",
@@ -481,7 +500,13 @@ const TESTS = [
     id: "v2-s15-z-slash-words",
     name: "Stage 15 words: Z and /",
     type: "wordbank",
-    content: ["size", "zoo", "prize", "quiz", "lazy", "crazy", "zero", "dozen"],
+    // A slash never occurs inside a real word, so pure single-word entries
+    // would drop the "/" half of this pinpoint (see v2-s04-a-semicolon-words
+    // for the same fix and its rationale). A few entries pair two
+    // already-real words from this bank with a slash between them, no
+    // spaces - the familiar "and/or"-style usage - keeping the reach in
+    // rotation.
+    content: ["size", "zoo", "prize", "quiz", "lazy", "crazy", "zero", "dozen", "zoo/zero", "prize/quiz", "lazy/crazy", "size/dozen"],
     durations: [10, 15, 20, 30, 60],
     defaultDuration: 30,
     instructions: "Type the words as they appear.",

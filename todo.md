@@ -76,7 +76,15 @@ as the letters. Put these tests after the graduation test.
 
 - [X] 17. Change the display diagram to True by default.
 
-- [ ] 18. The words for a and ; don't have any semi-colons. How can this be 
-intelligently changed?
+- [X] 18. The words for a and ; don't have any semi-colons. How can this be 
+intelligently changed? Added a few "word; word" entries pairing two real
+stage-4 words with a semicolon between them - not a full clause (only 7
+letters exist yet), but the same word-then-; reach. Same fix applied to
+stage 12 (comma-separated list: "come, call"), stage 14 (two short
+fragments: "fix. mix" - real capitalized sentences arrive at Stage 18),
+and stage 15 (and/or-style: "zoo/zero").
 
-
+- [ ] 19. When the user starts (or restarts) a particular test, the app should
+scroll to the top so the user can concentrate on typing. Right now, if I restart
+a particular test, the countdown starts and I have to hurry up to scroll up to
+the top so I can see what I need to be typing.
