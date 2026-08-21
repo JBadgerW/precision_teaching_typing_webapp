@@ -4,8 +4,15 @@
   --text: #1f2933;
   --muted: #6b7280;
   --accent: #2563eb;
-  --correct: #16a34a;
-  --incorrect: #dc2626;
+  /* Okabe-Ito blue/vermillion, not green/red - red-green colorblind
+     students can't reliably distinguish green from red by hue alone, and
+     these are the two colors correct/incorrect keystrokes are shown in
+     both live (while typing) and on the results review. Blue relies on
+     S-cones (unaffected by protan/deuteranopia); vermillion is a red-
+     orange, not pure red, keeping it separated from blue even under
+     tritanopia. Same hex values as the keyboard diagram's finger palette. */
+  --correct: #0072b2;
+  --incorrect: #d55e00;
   --border: #d1d5db;
 }
 
@@ -192,7 +199,7 @@ button.selected {
 
 .char.incorrect {
   color: var(--incorrect);
-  background: rgba(220, 38, 38, 0.12);
+  background: rgba(213, 94, 0, 0.12);
   border-radius: 0.15em;
 }
 

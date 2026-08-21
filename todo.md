@@ -64,10 +64,12 @@ something the students have to bypass every day, and it's less of a temptation f
 them. I can easily direct them to find it on day 1 to take it for benchmarking
 purposes.
 
-- [ ] 15. After all that concern over colorblind access, my colors for correct
+- [X] 15. After all that concern over colorblind access, my colors for correct
 vs incorrect are green vs red. Does that make the screen difficult to read 
 while a colorblind student is typing or while reviewing the typing for mistakes?
-Perhaps this should be changed to blue vs red?
+Perhaps this should be changed to blue vs red? Yes - switched to Okabe-Ito
+blue (#0072b2) vs vermillion (#d55e00), same hex values already used in the
+keyboard diagram's finger palette.
 
 - [ ] 16. Add pinpoints for numbers and the symbols which lie on the same keys
 as the letters. Put these tests after the graduation test.
