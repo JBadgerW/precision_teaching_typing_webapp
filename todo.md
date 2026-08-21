@@ -91,3 +91,5 @@ the top so I can see what I need to be typing. In fact, the app should always
 scroll to the top, even when the user chooses to start a new test, too. Added
 window.scrollTo(0, 0) to beginReady() (Start and Try Again) and to Pick
 Another Test, so the dropdown is back in view too.
+
+- [ ] 20. Add a Student Guide.
