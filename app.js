@@ -59,9 +59,10 @@
   // Whether a wrong keystroke gets colored red (see .char.incorrect in
   // style.css) as soon as it's typed. Correct keystrokes stay uncolored too
   // when this is off, so turning it off means no live feedback at all, not
-  // just no red. Error tracking for the results screen (most-missed-keys,
-  // slowest keys) is unaffected either way - this only controls the live
-  // per-keystroke coloring.
+  // just no red. This only controls *live* per-keystroke coloring while the
+  // student is typing - the results screen always shows the full colored
+  // review and the most-missed/slowest-keys breakdowns regardless (see
+  // keystrokeResults and renderReview below).
   let showTypingErrors = showErrorsToggle.checked;
   showErrorsToggle.addEventListener("change", () => {
     showTypingErrors = showErrorsToggle.checked;
@@ -98,6 +99,11 @@
   let renderedLength = 0;
   let timerIntervalId = null;
   let running = false;
+  // Per-position correct/incorrect, recorded on every scored keystroke
+  // regardless of the "Show typing errors" toggle, so the results screen can
+  // always render the full colored review - not just when live feedback was
+  // on during the run (see renderReview).
+  let keystrokeResults = [];
 
   function setScreen(name) {
     Object.values(screens).forEach((el) => el.classList.add("hidden"));
@@ -257,6 +263,7 @@
     stimulusGen = createStimulusGenerator(currentTest, currentDuration);
     scorer = createScorer(stimulusGen);
     renderedLength = 0;
+    keystrokeResults = [];
     // A previous run's results screen may have moved stimulusDisplay into
     // reviewSection (see showResults) - claim it back before typing starts.
     typingArea.appendChild(stimulusDisplay);
@@ -333,6 +340,7 @@
     if (!result) return;
 
     renderNewChars();
+    keystrokeResults[prevPosition] = result.correct;
 
     const span = stimulusDisplay.children[prevPosition];
     if (span && liveFeedbackEnabled()) {
@@ -395,7 +403,7 @@
     // Must come after setScreen(): stimulusDisplay has no CSS layout box
     // while screen-results is still hidden, so this would be a silent
     // no-op any earlier (same reasoning as the beginRunning() scroll reset).
-    if (liveFeedbackEnabled()) stimulusDisplay.scrollTop = 0;
+    stimulusDisplay.scrollTop = 0;
   }
 
   // Shows the pinpoint's suggested aim (if it has one) next to the
@@ -439,13 +447,17 @@
     sessionCompare.classList.remove("hidden");
   }
 
-  // Only when typing errors are shown live does the typed passage carry
-  // useful review information (right/wrong coloring) - otherwise every
-  // character looks identical and there's nothing to review.
+  // The colored review is always shown on the results screen, even if
+  // "Show typing errors" was off during the run (see keystrokeResults) - the
+  // spans may not have been colored live, so apply the coloring now from the
+  // recorded per-keystroke results before revealing the section.
   function renderReview() {
-    const enabled = liveFeedbackEnabled();
-    reviewSection.classList.toggle("hidden", !enabled);
-    if (enabled) reviewSection.appendChild(stimulusDisplay);
+    keystrokeResults.forEach((correct, position) => {
+      const span = stimulusDisplay.children[position];
+      if (span) span.classList.add(correct ? "correct" : "incorrect");
+    });
+    reviewSection.classList.remove("hidden");
+    reviewSection.appendChild(stimulusDisplay);
   }
 
   function renderErrorBreakdown() {
