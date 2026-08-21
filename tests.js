@@ -83,9 +83,12 @@
 //   Stage 6-15 drills:                       60 correct/min, <=2 err/min.
 //   Word banks & checkpoint probes:          70 correct/min, <=2 err/min.
 //   Shift/punctuation/sentences/extras:      90 correct/min, <=2 err/min.
+//   Number/symbol drills (post-graduation):  60 correct/min, <=2 err/min.
+//   Number/symbol banks & checkpoint:        70 correct/min, <=2 err/min.
 //   Benchmark probe:                        150 correct/min, <=2 err/min.
-// The seven probe pinpoints (the benchmark and the three checkpoints) also
-// carry `assessment: true` - see the field reference above.
+// The eight probe pinpoints (the benchmark, the three letter checkpoints,
+// and the numbers checkpoint) also carry `assessment: true` - see the
+// field reference above.
 // -----------------------------------------------------------------------
 
 const TESTS = [
@@ -572,6 +575,131 @@ const TESTS = [
     instructions: "Type each sentence as it appears, including capitals and punctuation. Just do your best - this one is for the chart.",
     aim: { correctPerMin: 150, maxIncorrectPerMin: 2 },
     assessment: true
+  },
+
+  // ---- Numbers & symbols: the number row (post-graduation) ----
+  // Placed after the benchmark on purpose: the number row is for students
+  // who have graduated from the 18 letter stages. The progression mirrors
+  // the letter curriculum's finger-pair symmetry - index fingers first
+  // (4 & 7), then middle (3 & 8), ring (2 & 9), pinkies (1 & 0), and the
+  // long index stretches (5 & 6) last, since those are the hardest reaches.
+  //
+  // Drills stay digit-pure except for the home-row anchor letter (f4, j7,
+  // ...) - the pinpointed behavior is the reach FROM home and back, so the
+  // anchor is part of the behavior, not a distraction. The "words" banks
+  // then deliberately re-mix digits into words and phrases, because that's
+  // how numbers occur in real typing - same acquisition-then-application
+  // split as the letter stages.
+  {
+    id: "v2-n01-47-drill",
+    name: "Numbers 1: 4 and 7",
+    type: "wordbank",
+    content: ["4", "7", "44", "77", "47", "74", "f4", "j7"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Reach up from f to 4 and from j to 7, and come straight back home. Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-n02-38-drill",
+    name: "Numbers 2: 3 and 8",
+    type: "wordbank",
+    content: ["3", "8", "33", "88", "38", "83", "d3", "k8", "34", "78"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Middle fingers reach from d to 3 and from k to 8. Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-n03-29-drill",
+    name: "Numbers 3: 2 and 9",
+    type: "wordbank",
+    content: ["2", "9", "22", "99", "29", "92", "s2", "l9", "23", "89"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Ring fingers reach from s to 2 and from l to 9. Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-n04-10-drill",
+    name: "Numbers 4: 1 and 0",
+    type: "wordbank",
+    content: ["1", "0", "11", "00", "10", "01", "a1", ";0", "12", "90"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Pinkies reach from a to 1 and from ; to 0. Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-n05-56-drill",
+    name: "Numbers 5: 5 and 6",
+    type: "wordbank",
+    content: ["5", "6", "55", "66", "56", "65", "f5", "j6", "45", "67"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "The longest stretches: index fingers reach from f to 5 and from j to 6. Type each group as shown.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+
+  // ---- Numbers checkpoint (retention probe, assessment) ----
+  // Cumulative over all ten digits, single digits and realistic multi-digit
+  // strings mixed. Same role as checkpoints A-C: run it periodically once
+  // all five digit stages are done.
+  {
+    id: "v2-checkpoint-n-digits",
+    name: "Numbers checkpoint: all ten digits",
+    type: "wordbank",
+    content: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "25", "47", "83", "365", "1776", "2026", "8050"],
+    durations: [10, 15, 20, 30, 60, 120],
+    defaultDuration: 60,
+    instructions: "Random numbers using every digit. Type each one as it appears.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 },
+    assessment: true
+  },
+  {
+    id: "v2-n-words-context",
+    name: "Numbers words: numbers in context",
+    type: "wordbank",
+    content: ["7 days", "24 hours", "12 eggs", "365 days", "page 42", "Room 101", "May 4", "60 seconds", "since 1776", "10 out of 10"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 30,
+    instructions: "Type each phrase as it appears, numbers and all.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
+  },
+
+  // ---- Symbols on the number keys (shift + digit) ----
+  // Same keys and fingers as the digits just learned, plus the
+  // opposite-hand shift from stage 16. Split by real-world frequency:
+  // $ % & ! first, then the rarer ( ) @ # * ^.
+  {
+    id: "v2-sym1-drill",
+    name: "Symbols 1: $ % & !",
+    type: "wordbank",
+    content: ["$", "%", "&", "!", "$5", "$40", "50%", "100%"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Hold shift with the opposite hand while the reaching finger strikes the number key.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-sym2-drill",
+    name: "Symbols 2: ( ) @ # * ^",
+    type: "wordbank",
+    content: ["(", ")", "()", "@", "#", "*", "^", "(a)", "#1", "2*3"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 15,
+    instructions: "Hold shift with the opposite hand while the reaching finger strikes the number key.",
+    aim: { correctPerMin: 60, maxIncorrectPerMin: 2 }
+  },
+  {
+    id: "v2-sym-words-context",
+    name: "Symbols words: symbols in context",
+    type: "wordbank",
+    content: ["$5", "$20", "100%", "50% off", "Sam & Al", "#1 fan", "(yes)", "(not yet)", "2 * 2", "me@school.org"],
+    durations: [10, 15, 20, 30, 60],
+    defaultDuration: 30,
+    instructions: "Type each phrase exactly, symbols included.",
+    aim: { correctPerMin: 70, maxIncorrectPerMin: 2 }
   },
 
   // ---- Extra: beyond the 18-stage curriculum ----

@@ -71,7 +71,7 @@ Perhaps this should be changed to blue vs red? Yes - switched to Okabe-Ito
 blue (#0072b2) vs vermillion (#d55e00), same hex values already used in the
 keyboard diagram's finger palette.
 
-- [ ] 16. Add pinpoints for numbers and the symbols which lie on the same keys
+- [X] 16. Add pinpoints for numbers and the symbols which lie on the same keys
 as the letters. Put these tests after the graduation test.
 
 - [X] 17. Change the display diagram to True by default.
