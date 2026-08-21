@@ -84,7 +84,10 @@ stage 12 (comma-separated list: "come, call"), stage 14 (two short
 fragments: "fix. mix" - real capitalized sentences arrive at Stage 18),
 and stage 15 (and/or-style: "zoo/zero").
 
-- [ ] 19. When the user starts (or restarts) a particular test, the app should
+- [X] 19. When the user starts (or restarts) a particular test, the app should
 scroll to the top so the user can concentrate on typing. Right now, if I restart
 a particular test, the countdown starts and I have to hurry up to scroll up to
-the top so I can see what I need to be typing.
+the top so I can see what I need to be typing. In fact, the app should always
+scroll to the top, even when the user chooses to start a new test, too. Added
+window.scrollTo(0, 0) to beginReady() (Start and Try Again) and to Pick
+Another Test, so the dropdown is back in view too.

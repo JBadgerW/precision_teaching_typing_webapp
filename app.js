@@ -243,6 +243,12 @@
   // ---- ready screen (countdown) ----
 
   function beginReady() {
+    // Scrolls the page itself (not stimulusDisplay's own internal scroll,
+    // reset separately in beginRunning/showResults) back to the top. Called
+    // on both Start and Try Again, so a student who scrolled down to read
+    // results or browse the picker doesn't have to scramble to find the
+    // typing area before the countdown reaches GO.
+    window.scrollTo(0, 0);
     setScreen("ready");
     let step = 0;
     countdownDisplay.textContent = COUNTDOWN_STEPS[step];
@@ -537,7 +543,13 @@
   }
 
   tryAgainBtn.addEventListener("click", () => beginReady());
-  pickAnotherBtn.addEventListener("click", () => setScreen("select"));
+  pickAnotherBtn.addEventListener("click", () => {
+    // Same page-scroll reset as beginReady() (see its comment) - after a
+    // long results screen this puts the pinpoint dropdown back in view
+    // instead of leaving the student scrolled down past it.
+    window.scrollTo(0, 0);
+    setScreen("select");
+  });
 
   // ---- keyboard diagram ----
 
