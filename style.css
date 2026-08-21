@@ -217,6 +217,60 @@ button.selected {
   padding: 0;
 }
 
+.chart-numbers {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.chart-number {
+  flex: 1;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  background: var(--panel);
+}
+
+.chart-number--correct {
+  border-color: var(--correct);
+}
+
+.chart-number--incorrect {
+  border-color: var(--incorrect);
+}
+
+.chart-number-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.chart-number-value {
+  display: block;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chart-number--correct .chart-number-value {
+  color: var(--correct);
+}
+
+.chart-number--incorrect .chart-number-value {
+  color: var(--incorrect);
+}
+
+.chart-numbers-note {
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  margin: -0.5rem 0 1rem;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -282,11 +336,6 @@ button.selected {
 
 .error-list .count {
   color: var(--muted);
-}
-
-.chart-reminder {
-  color: var(--muted);
-  font-style: italic;
 }
 
 .results-buttons {

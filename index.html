@@ -46,12 +46,22 @@
   <section id="screen-results" class="screen hidden">
     <h2>Results</h2>
 
+    <div class="chart-numbers">
+      <div class="chart-number chart-number--correct">
+        <span class="chart-number-label">Correct / min</span>
+        <span id="resultCorrectPerMin" class="chart-number-value"></span>
+      </div>
+      <div class="chart-number chart-number--incorrect">
+        <span class="chart-number-label">Incorrect / min</span>
+        <span id="resultIncorrectPerMin" class="chart-number-value"></span>
+      </div>
+    </div>
+    <p class="chart-numbers-note">Copy these two numbers onto your chart.</p>
+
     <dl class="results-grid">
       <dt>Timing</dt><dd id="resultTime"></dd>
       <dt>Correct</dt><dd id="resultCorrect"></dd>
       <dt>Incorrect</dt><dd id="resultIncorrect"></dd>
-      <dt>Correct / min</dt><dd id="resultCorrectPerMin"></dd>
-      <dt>Incorrect / min</dt><dd id="resultIncorrectPerMin"></dd>
       <dt id="resultAimLabel" class="hidden">Aim</dt><dd id="resultAim" class="hidden"></dd>
     </dl>
 
@@ -66,8 +76,6 @@
 
     <h3>Slowest keys</h3>
     <ul id="slowKeyList" class="error-list"></ul>
-
-    <p class="chart-reminder">Copy these numbers onto your chart.</p>
 
     <div class="results-buttons">
       <button id="tryAgainBtn" type="button">Try Again</button>
