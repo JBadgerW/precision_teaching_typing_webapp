@@ -40,7 +40,7 @@ endurance dimension on the pinpoints that most deserve it.
 and j when shown" rather than "Stage 1: F and J" - matches how PT
 traditionally states a pinpoint and teaches students what a pinpoint is.
 
-- [ ] 10. I want the app to keep track of mistakes, even if they are not 
+- [X] 10. I want the app to keep track of mistakes, even if they are not 
 displayed while the user is typing and then display them at the Results screen,
 even if the active feedback option is not checked.
 
@@ -68,3 +68,8 @@ purposes.
 vs incorrect are green vs red. Does that make the screen difficult to read 
 while a colorblind student is typing or while reviewing the typing for mistakes?
 Perhaps this should be changed to blue vs red?
+
+- [ ] 16. Add pinpoints for numbers and the symbols which lie on the same keys
+as the letters. Put these tests after the graduation test.
+
+- [ ] 17. Change the display diagram to True by default.
