@@ -81,20 +81,24 @@ Chart conventions (keep them uniform across the class so charts are readable at 
 Decide your class's *aims* before you start. The suggested starting aims (also in the comments at the top of `tests.js`) are:
 
 #table(
-  columns: (1fr, auto, auto),
-  align: (left, center, center),
-  table.header([*Pinpoint type*], [*Correct/min aim*], [*Errors/min*]),
-  [Letter drills (stages 1–15)], [50–70 (early stages may sit nearer 40)], [≤ 2],
-  [Word banks and checkpoints], [60–80], [≤ 2],
-  [Shift, punctuation, sentences], [80–100], [≤ 2],
-  [Benchmark probe (graduation)], [≥ 150 at 60 s], [≤ 2],
+  columns: (1fr, auto, auto, auto),
+  align: (left, center, center, center),
+  table.header([*Pinpoint type*], [*Correct/min aim*], [*Errors/min*], [*Certified at*]),
+  [Letter drills (stages 1–15)], [50–70 (early stages may sit nearer 40)], [≤ 2], [30 s],
+  [Word banks], [60–80], [≤ 2], [30 s],
+  [Checkpoints A–C], [60–80], [≤ 2], [60 s],
+  [Shift, punctuation, sentences], [80–100], [≤ 2], [30 s],
+  [Number row and symbols (post-graduation)], [60–70], [≤ 2], [30 s (digits checkpoint: 60 s)],
+  [Benchmark probe (graduation)], [≥ 150], [≤ 2], [60 s, held once at 120 s],
 )
+
+An aim only counts as *met* at the pinpoint's certification timing in the last column (the app shows it next to the aim on the results screen). Shorter timings are practice sprints: they produce chartable dots and they are where most of the learning happens, but they cannot certify a stage. Two reasons. First, a rate held for ten seconds is a burst, not fluency — *endurance* is part of the definition of a fluent performance. Second, arithmetic: the smallest non-zero rate a timing can record is 1 divided by its length, so one error in a 10 s sprint is already 6/min. The ≤ 2 errors/min criterion is literally unmeasurable below a 30 s timing.
 
 These are *starting hypotheses*, not established standards. After your first cohort, adjust them from your own charts: an aim is right when students who reach it retain the skill, hold it for longer timings, and don't collapse at the next stage.
 
 = Day one: the baseline
 
-Before any instruction, every student takes the *Benchmark: entry and graduation probe* — it is first in the test picker on purpose.
+Before any instruction, every student takes the *Benchmark: entry and graduation probe*. It sits near the end of the test picker (after Stage 18, before the number-row pinpoints) so it isn't a daily temptation — on day one, direct students to it explicitly.
 
 + Explain the rules: fingers on the keyboard however they like today, backspace won't work, errors are fine, just keep going. Say explicitly that nobody is expected to do well — this timing exists so that, months from now, they can see how far they've come.
 + Run one 60-second timing. Have each student record on their chart: corrects/min, errors/min, and (on the back of the chart or a notes sheet) their top most-missed and slowest keys.
@@ -149,7 +153,7 @@ How to use a stage:
 
 = When to move on
 
-Advance to the next stage when the current stage's pinpoints reach the aim (see the table in section 4) *on two consecutive days*, with errors at or under 2/min. One lucky sprint is not fluency.
+Advance to the next stage when the current stage's pinpoints reach the aim *at the certification timing* — 30 s for stage drills and word banks, 60 s for checkpoints (see the table in section 4) — *on two consecutive days*, with errors at or under 2/min. One lucky sprint is not fluency, and a 10 s sprint cannot certify a stage at all: its record floor makes any error rate between 0 and 6/min unmeasurable. Sprint short, certify long.
 
 Do not hold students hostage to perfection: if a student sits just under the aim but the celeration is clearly rising, moving on and letting the review checkpoints catch any slippage is usually better than grinding. Conversely, if a student clears a stage but the next checkpoint sags, that is the chart telling you to schedule review — see section 10.
 

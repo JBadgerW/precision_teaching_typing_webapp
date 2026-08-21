@@ -407,16 +407,20 @@
   }
 
   // Shows the pinpoint's suggested aim (if it has one) next to the
-  // student's own rate. A reference point only - no color-coded met/not-met
-  // indicator, since red/green is already flagged as a colorblind-access
-  // problem elsewhere in this app (see todo.md).
+  // student's own rate, including the certification timing (aimTiming in
+  // tests.js) - the aim only counts as met at that timing or longer, so a
+  // hot rate on a 10s sprint doesn't read as a certified stage. A reference
+  // point only - no color-coded met/not-met indicator, since red/green is
+  // already flagged as a colorblind-access problem elsewhere in this app
+  // (see todo.md).
   function renderAim(test, correctPerMin, incorrectPerMin) {
     if (!test || !test.aim) {
       resultAimLabel.classList.add("hidden");
       resultAim.classList.add("hidden");
       return;
     }
-    resultAim.textContent = `${test.aim.correctPerMin}+ correct/min, ≤${test.aim.maxIncorrectPerMin} err/min`;
+    const timing = test.aimTiming ? ` at ${test.aimTiming}s` : "";
+    resultAim.textContent = `${test.aim.correctPerMin}+ correct/min, ≤${test.aim.maxIncorrectPerMin} err/min${timing}`;
     resultAimLabel.classList.remove("hidden");
     resultAim.classList.remove("hidden");
   }
