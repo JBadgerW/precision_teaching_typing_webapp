@@ -72,25 +72,21 @@ Two numbers matter after every sprint:
 - *Correct per minute* — how many right keystrokes you made, per minute.
 - *Incorrect per minute* — how many wrong ones.
 
-Not percentages, not letter grades. Just those two counts. Your job is to make the first number climb while the second stays low. Your chart shows whether that's happening — and *you* keep the chart, not the app and not the teacher.
-
-#callout("the app remembers nothing")[
-  The app stores no scores. When a sprint ends, the numbers on the screen exist only until you click away — so record them right away. Your paper chart is the official record of everything you've done, and it belongs to you.
-]
+Your job is to make the first number climb while the second stays low. Your chart shows whether that's happening, and *you* keep the chart, since tracking your own progress is the best way to stay engaged with the process.
 
 #section[The rules of a timing]
 
 + *Pick your pinpoint and timing.* Your current stage's drill or words, at the timing you and your teacher have agreed on. Short sprints (10–15 s) are for building speed; 30 s and 60 s are for proving it.
 + *Hands to home position, eyes on the screen.* Then click start.
 + *Type what appears. Don't stop.* Keep going until time runs out.
-+ *Backspace doesn't work — on purpose.* If you hit a wrong key, it costs one error and that's all. Don't freeze, don't try to fix it, just type the next character. Stopping to fuss over a mistake costs far more than the mistake did.
++ *Backspace doesn't work on purpose.* If you hit a wrong key, it costs one error and that's all. Don't freeze, don't try to fix it, just type the next character. Stopping to fuss over a mistake costs far more than the mistake did.
 + *When time's up, read your results and write them down.*
 
 Mistakes are fine. A sprint with a few errors and lots of correct keystrokes beats a slow, careful, "perfect" one. Speed and accuracy grow together when you keep moving.
 
 #section[The five technique habits]
 
-The app can count your keystrokes, but it can't see your hands. These five habits are what actually make you a touch typist — cheat on them and your speed will hit a ceiling later.
+The app can count your keystrokes, but it can't see your hands. These five habits are what actually make you a touch typist. If you cheat on them and your speed will hit a ceiling later.
 
 #table(
   columns: (auto, 1fr),
@@ -102,10 +98,10 @@ The app can count your keystrokes, but it can't see your hands. These five habit
     table.cell(fill: accent)[#text(fill: white, weight: "bold", size: 8.5pt)[What it looks like]],
   ),
   [*Home position*], [Fingers curved and resting on #raw("a s d f") and #raw("j k l ;"), thumbs on the space bar. Your index fingers find the bumps on #raw("f") and #raw("j") without looking. Every reach starts from home and returns to home.],
-  [*Eyes on the screen*], [Never on the keyboard. This is the single biggest difference between touch typists and hunt-and-peck typists. If your eyes keep drifting down, ask your teacher to cover your hands with a sheet of paper — it works.],
-  [*One finger, one key*], [Every key belongs to exactly one finger. No borrowing a "convenient" finger — speed built on wrong fingers stops growing and is hard to fix later.],
+  [*Eyes on the screen*], [Don't look at the keyboard. This is the single biggest difference between touch typists and hunt-and-peck typists. Use the keyboard shields to cover the keyboard and look at the on-screen diagram if you forget where a key is],
+  [*One finger, one key*], [Every key belongs to exactly one finger: no borrowing a "convenient" finger. Speed built on wrong fingers stops growing and is hard to fix later.],
   [*Opposite-hand shift*], [Capitals use the shift key on the *other* hand: right shift for #raw("A"), left shift for #raw("J"). This matters from Stage 16 on.],
-  [*Relaxed rhythm*], [Wrists floating, strokes light and even. Don't strain for speed inside a sprint — speed comes from relaxed, correct practice, day after day.],
+  [*Relaxed rhythm*], [Wrists floating, strokes light and even. Don't strain for speed inside a sprint. Speed comes from relaxed, correct practice, day after day.],
 )
 
 #section[Reading your results screen]
@@ -128,7 +124,7 @@ At the end of every session, chart your best sprint for each pinpoint you practi
 The game is simple: *beat yesterday's dot.* Not the fastest kid in class — your own dot, from your own yesterday. If your dots are climbing and your ×'s are low or falling, you're winning, whatever anyone else's chart says.
 
 #callout("stuck for a few days?")[
-  If your dots have been flat for three or four sessions, that's not a "you" problem — it's a signal to change the practice. Talk to your teacher. Usually the fix is one of: drop back from words to the drill, shorten the timing (10-second sprints are great for getting unstuck), attack whatever your most-missed and slowest keys have been naming all week, or check your technique — flat charts are very often an eyes-on-the-keyboard problem.
+  If your dots have been flat for three or four sessions, that's not a "you" problem — it's a signal to change the practice. Talk to your teacher. Usually the fix is one of: drop back from words to the drill, shorten the timing (10-second sprints are great for getting unstuck), attack whatever your most-missed and slowest keys have been naming all week, or check your technique. Flat charts are very often an eyes-on-the-keyboard problem.
 ]
 
 #section[Aims: how you level up]
@@ -154,16 +150,16 @@ Every pinpoint has an *aim* — the correct/min and errors/min that count as flu
 )
 
 #v(2pt)
-Your exact aim is shown on the results screen for each pinpoint — trust the screen if it differs from this table.
+Your exact aim is shown on the results screen for each pinpoint.
 
-Why "counts at"? A ten-second burst isn't the same as real fluency — holding the pace is part of the skill. So sprint short to *build* speed, then prove it at the certification timing. You move to the next stage when you hit the aim at that timing *two days in a row*, with errors at 2/min or under. When you do, fill in the row on your *Achievement Tracker*: the date, your numbers, your initials. That page is your trophy case.
+Why "counts at"? A ten-second burst isn't the same as real fluency; holding the pace is part of the skill. So sprint short to *build* speed, then prove it at the certification timing. You move to the next stage when you hit the aim at that timing *two days in a row*, with errors at 2/min or under. When you do, fill in the row on your *Achievement Tracker*: the date, your numbers, your initials. That page is your trophy case.
 
 #section[Probes: the checkpoints and the benchmark]
 
-Some pinpoints are marked #probe-badge on your Achievement Tracker. These are measuring sticks, not daily practice — your teacher schedules them.
+Some pinpoints are marked #probe-badge on your Achievement Tracker. These are measuring sticks, not daily practice. Your teacher will schedule them occasionally, but you may absolutely use them to practice with.
 
 - *Checkpoints A, B, C* come after the home row, after twenty keys, and after all 26 letters. They check that *everything so far* is still fluent, about once a week. If a checkpoint sags while your current stage is fine, that just means some older keys need a few review sprints — the checkpoint did its job by catching it.
-- *The Benchmark* is a 60-second timing on real sentences with capitals and punctuation. You took it on day one, before you learned anything — that dot is your starting point, and every weekly benchmark after it shows your real, overall typing growing. Expect it to lag behind your practiced stages at first; the gap closes on its own.
+- *The Benchmark* is a 60-second timing on real sentences with capitals and punctuation. You took it on day one, before you learned anything. That dot is your starting point, and every weekly benchmark after it shows your real, overall typing growing. Expect it to lag behind your practiced stages at first; the gap closes on its own.
 
 #callout("the one rule everyone follows")[
   *Nobody ever practices on the benchmark.* It only measures your real typing if its sentences stay unfamiliar. Run it when it's scheduled — about once a week — and never in between. Practicing on it wouldn't make you a better typist; it would only break the measuring stick.
@@ -177,7 +173,7 @@ You graduate from the course when your benchmark shows:
 - on *three separate class days* — one great day isn't fluency,
 - and the same rates held at least once on the *120-second* benchmark.
 
-That's roughly 30 words per minute of real, eyes-on-the-screen typing. After that you move to the Extra pinpoints — full sentences and a literature passage — and, more importantly, everything you type for any class becomes practice. The chart got you here; the skill is yours for life.
+That's roughly 30 words per minute of real, eyes-on-the-screen typing. After that you move to the Extra pinpoints — full sentences and a literature passage — and, more importantly, everything you type for any class becomes practice.
 
 #v(0.6em)
 #line(length: 100%, stroke: 0.5pt + rule-gray)
