@@ -55,7 +55,6 @@
     color: "chromebook_keyboard_diagram_colors.svg"
   };
 
-  const showErrorsToggle = document.getElementById("showErrorsToggle");
   // Whether a wrong keystroke gets colored red (see .char.incorrect in
   // style.css) as soon as it's typed. Correct keystrokes stay uncolored too
   // when this is off, so turning it off means no live feedback at all, not
@@ -63,19 +62,18 @@
   // student is typing - the results screen always shows the full colored
   // review and the most-missed/slowest-keys breakdowns regardless (see
   // keystrokeResults and renderReview below).
-  let showTypingErrors = showErrorsToggle.checked;
-  showErrorsToggle.addEventListener("change", () => {
-    showTypingErrors = showErrorsToggle.checked;
-  });
+  //
+  // There used to be a "Show typing errors while typing" checkbox letting
+  // students turn this off. Testing showed students always want it on, so
+  // it's now hardcoded true and the checkbox is gone - but the wiring below
+  // (and the assessment override) is left in place in case that changes.
+  let showTypingErrors = true;
 
   // Live feedback is forced ON for assessment pinpoints (the benchmark and
   // the checkpoints) regardless of the student's own toggle, so every
   // administration of a probe is measured under the same condition - and so
   // an error doesn't go unnoticed and quietly cascade into a run of
-  // consecutive errors. Real typing has feedback; a probe should too. The
-  // checkbox's stored preference is untouched - it's simply overridden
-  // while an assessment pinpoint is selected (see onTestSelected, which
-  // also disables the checkbox as a visible cue).
+  // consecutive errors. Real typing has feedback; a probe should too.
   function liveFeedbackEnabled() {
     return (currentTest && currentTest.assessment) || showTypingErrors;
   }
@@ -172,7 +170,6 @@
 
     const isAssessment = !!(currentTest && currentTest.assessment);
     assessmentNote.classList.toggle("hidden", !isAssessment);
-    showErrorsToggle.disabled = isAssessment;
 
     renderDurationButtons(currentTest);
     updateStartEnabled();
