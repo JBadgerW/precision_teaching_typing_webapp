@@ -428,6 +428,25 @@
     resultAim.classList.remove("hidden");
   }
 
+  // "Best" is a single run, not the best correct rate and the best incorrect
+  // rate independently picked from whichever runs happened to produce them -
+  // that would pair numbers that never occurred together and could show a
+  // reckless-fast run's correct rate alongside a glacially-slow run's error
+  // rate. If the pinpoint has an aim, a run that meets the max-incorrect aim
+  // always outranks one that doesn't, regardless of correct rate; within the
+  // same qualify/don't-qualify bucket (or when there's no aim to check
+  // against), the higher correct rate wins, ties broken by lower incorrect.
+  function isBetterRun(candidate, current, test) {
+    const aim = test.aim;
+    if (aim) {
+      const candQualifies = candidate.incorrect <= aim.maxIncorrectPerMin;
+      const currQualifies = current.incorrect <= aim.maxIncorrectPerMin;
+      if (candQualifies !== currQualifies) return candQualifies;
+    }
+    if (candidate.correct !== current.correct) return candidate.correct > current.correct;
+    return candidate.incorrect < current.incorrect;
+  }
+
   // Shows this session's previous attempt and running best for this exact
   // pinpoint+duration, then records the current attempt. Hidden entirely on
   // the first attempt of a pinpoint+duration this session - there's nothing
@@ -435,12 +454,16 @@
   function renderSessionCompare(test, duration, correctPerMin, incorrectPerMin) {
     const key = sessionStatsKey(test, duration);
     const prev = sessionStats.get(key);
+    const current = { correct: correctPerMin, incorrect: incorrectPerMin };
+    const best = prev && !isBetterRun(current, { correct: prev.bestCorrect, incorrect: prev.bestIncorrect }, test)
+      ? { correct: prev.bestCorrect, incorrect: prev.bestIncorrect }
+      : current;
 
     const updated = {
       lastCorrect: correctPerMin,
       lastIncorrect: incorrectPerMin,
-      bestCorrect: prev ? Math.max(prev.bestCorrect, correctPerMin) : correctPerMin,
-      bestIncorrect: prev ? Math.min(prev.bestIncorrect, incorrectPerMin) : incorrectPerMin
+      bestCorrect: best.correct,
+      bestIncorrect: best.incorrect
     };
     sessionStats.set(key, updated);
 
