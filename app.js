@@ -31,6 +31,7 @@
   const hiddenInput = document.getElementById("hiddenInput");
 
   const reviewSection = document.getElementById("reviewSection");
+  const resultPinpoint = document.getElementById("resultPinpoint");
   const resultTime = document.getElementById("resultTime");
   const resultCorrect = document.getElementById("resultCorrect");
   const resultIncorrect = document.getElementById("resultIncorrect");
@@ -416,6 +417,7 @@
     const correctPerMin = Math.round(correct / minutes);
     const incorrectPerMin = Math.round(incorrect / minutes);
 
+    resultPinpoint.textContent = currentTest.name;
     resultTime.textContent = `${currentDuration}s`;
     resultCorrect.textContent = correct;
     resultIncorrect.textContent = incorrect;
