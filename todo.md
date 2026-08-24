@@ -29,9 +29,9 @@ feedback, and consistency across benchmark attempts matters more than
 simulating a no-feedback condition - so the flag now forces live feedback
 **on** for probes instead, uniformly, regardless of the student's toggle.
 
-- [ ] 7. Record-floor handling for zero errors - display something like "0
+- [ ] 7. ~Record-floor handling for zero errors - display something like "0
 errors (chart below 2/min)" instead of a bare 0, since a bare 0 isn't
-plottable on a logarithmic Standard Celeration Chart.
+plottable on a logarithmic Standard Celeration Chart.~
 
 - [X] 8. Add a 120s duration option to the checkpoint probes, for an
 endurance dimension on the pinpoints that most deserve it.
@@ -53,7 +53,7 @@ the diagram that will accord with the correct palette for accommodation of color
 blind people. When I made the current version grayscale, some of the bands were 
 indistinguishable. Is that relevant?~ 
 
-- [ ] 13. Do I want to highlight the characters/min and errors/min? Those pieces
+- [X] 13. Do I want to highlight the characters/min and errors/min? Those pieces
 might be harder to find in the summary screen. It might make sense to either 
 hide the raw values or else highlight the /min values. This will depend on how
 the students use it. If they are able to find the values and use them without 
@@ -92,4 +92,4 @@ scroll to the top, even when the user chooses to start a new test, too. Added
 window.scrollTo(0, 0) to beginReady() (Start and Try Again) and to Pick
 Another Test, so the dropdown is back in view too.
 
-- [ ] 20. Add a Student Guide.
+- [X] 20. Add a Student Guide.
