@@ -140,11 +140,18 @@
 
   // ---- select screen ----
 
+  // The benchmark probe is boldfaced in place (not moved to the top or
+  // bottom of the list) so it's easy to find on a student's first visit
+  // without being the first thing they're tempted to pick, and without
+  // getting lost among the optional post-graduation stuff at the bottom.
+  const BENCHMARK_TEST_ID = "v2-benchmark-probe";
+
   function populateTestSelect() {
     TESTS.forEach((test) => {
       const opt = document.createElement("option");
       opt.value = test.id;
       opt.textContent = test.name;
+      if (test.id === BENCHMARK_TEST_ID) opt.className = "benchmark-option";
       testSelect.appendChild(opt);
     });
   }
