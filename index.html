@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Precision Teaching Typing</title>
+<title>Precision Teaching - Typing Webapp</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>Precision Teaching Typing</h1>
+  <h1>Precision Teaching - Typing Webapp</h1>
 </header>
 
 <div class="layout">
@@ -81,13 +81,20 @@
       <h3>This session's runs</h3>
       <div class="session-history-scroll">
         <table id="sessionHistoryTable" class="session-history">
+          <colgroup>
+            <col class="col-time">
+            <col class="col-pinpoint">
+            <col class="col-timing">
+            <col class="col-rate">
+            <col class="col-rate">
+          </colgroup>
           <thead>
             <tr>
               <th>Time</th>
-              <th>Pinpoint</th>
+              <th class="col-pinpoint">Pinpoint</th>
               <th>Timing</th>
-              <th>Correct/min</th>
-              <th>Incorrect/min</th>
+              <th class="col-rate">Correct<br>/&nbsp;min</th>
+              <th class="col-rate">Incorrect<br>/&nbsp;min</th>
             </tr>
           </thead>
           <tbody id="sessionHistoryBody"></tbody>

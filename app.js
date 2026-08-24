@@ -436,7 +436,7 @@
 
     renderAim(currentTest, correctPerMin, incorrectPerMin);
     renderSessionCompare(runRecord);
-    renderSessionHistory(runRecord);
+    renderSessionHistory();
     renderErrorBreakdown();
     renderSlowKeyBreakdown();
     renderReview();
@@ -485,6 +485,40 @@
     return candidate.incorrect < current.incorrect;
   }
 
+  // The runs-table "Best" badge (see renderSessionHistory) uses a fixed
+  // certification bar instead of each pinpoint's own aim: >=60s timing and
+  // <=2 errors/min. A sub-60s run can never carry the badge, no matter how
+  // fast, because PT only certifies a rate held over a full minute. Among
+  // 60s+ runs, one holding errors to <=2/min always outranks one that
+  // doesn't; within the same qualify/don't bucket (or when none qualify)
+  // the higher correct rate wins, ties broken by lower incorrect.
+  const BEST_BADGE_MIN_DURATION = 60;
+  const BEST_BADGE_MAX_INCORRECT = 2;
+
+  function isBetterBestCandidate(candidate, current) {
+    const candQualifies = candidate.incorrect <= BEST_BADGE_MAX_INCORRECT;
+    const currQualifies = current.incorrect <= BEST_BADGE_MAX_INCORRECT;
+    if (candQualifies !== currQualifies) return candQualifies;
+    if (candidate.correct !== current.correct) return candidate.correct > current.correct;
+    return candidate.incorrect < current.incorrect;
+  }
+
+  // One badge per pinpoint attempted this session (not one for the whole
+  // table) - pinpoints differ in what correct rate is even attainable (a
+  // single-key drill vs. a full-sentence wordbank), so there's no
+  // PT-defensible way to compare correct rates across different pinpoints.
+  function findBestRunsByPinpoint() {
+    const bestByPinpoint = new Map();
+    sessionRuns.forEach(r => {
+      if (r.duration < BEST_BADGE_MIN_DURATION) return;
+      const current = bestByPinpoint.get(r.test.id);
+      if (!current || isBetterBestCandidate(r, current)) {
+        bestByPinpoint.set(r.test.id, r);
+      }
+    });
+    return new Set(bestByPinpoint.values());
+  }
+
   // Shows this session's previous attempt and running best for this exact
   // pinpoint+duration. Hidden entirely on the first attempt of a
   // pinpoint+duration this session - there's nothing to compare against yet.
@@ -507,32 +541,25 @@
     return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", second: "2-digit" });
   }
 
-  // Full log of this session's runs, most recent first, except that the
-  // best run for the pinpoint+duration just completed (see isBetterRun)
-  // floats to the very top instead of sitting in its chronological spot.
-  // Only that one group's best is floated - pinpoints differ in what rate is
-  // even attainable (a wordbank of full sentences vs. a single key drill),
-  // so there's no PT-defensible way to pick one "best" across every pinpoint
-  // in the session, and floating a best per group attempted so far would
-  // scatter the table into unpredictable sections. The rest of the log
-  // (every pinpoint, every duration) stays in plain chronological order so
-  // the run-by-run sequence within the session is still readable.
-  function renderSessionHistory(runRecord) {
+  // Full log of this session's runs, most recent first, staying in plain
+  // chronological order - the "Best" badge (see findBestRunsByPinpoint)
+  // marks up to one row per pinpoint in place rather than reordering rows.
+  function renderSessionHistory() {
     if (sessionRuns.length < 2) {
       sessionHistorySection.classList.add("hidden");
       return;
     }
-    const group = sameGroup(runRecord.test, runRecord.duration);
-    const best = group.reduce((b, r) => (isBetterRun(r, b, runRecord.test) ? r : b));
-    const rest = sessionRuns.filter(r => r !== best).slice().reverse();
+    const bestRuns = findBestRunsByPinpoint();
+    const rows = sessionRuns.slice().reverse();
 
     sessionHistoryBody.innerHTML = "";
-    [best, ...rest].forEach(r => {
+    rows.forEach(r => {
       const tr = document.createElement("tr");
-      if (r === best) tr.classList.add("session-history-best");
+      const isBest = bestRuns.has(r);
+      if (isBest) tr.classList.add("session-history-best");
 
       const timeCell = document.createElement("td");
-      if (r === best) {
+      if (isBest) {
         const badge = document.createElement("span");
         badge.className = "best-badge";
         badge.textContent = "Best";
@@ -542,6 +569,7 @@
       tr.appendChild(timeCell);
 
       const pinpointCell = document.createElement("td");
+      pinpointCell.className = "col-pinpoint";
       pinpointCell.textContent = r.test.name;
       tr.appendChild(pinpointCell);
 
@@ -550,10 +578,12 @@
       tr.appendChild(timingCell);
 
       const correctCell = document.createElement("td");
+      correctCell.className = "col-rate";
       correctCell.textContent = r.correct;
       tr.appendChild(correctCell);
 
       const incorrectCell = document.createElement("td");
+      incorrectCell.className = "col-rate";
       incorrectCell.textContent = r.incorrect;
       tr.appendChild(incorrectCell);
 

@@ -38,7 +38,7 @@ header h1 {
 }
 
 .layout {
-  max-width: 62rem;
+  max-width: 74rem;
   margin: 0 auto;
   padding: 0 1rem 3rem;
   display: grid;
@@ -54,7 +54,7 @@ header h1 {
 
 @media (min-width: 56rem) {
   .layout {
-    grid-template-columns: minmax(4.5rem, 6rem) minmax(0, 40rem) minmax(11rem, 13rem);
+    grid-template-columns: minmax(4.5rem, 6rem) minmax(0, 48rem) minmax(11rem, 13rem);
     grid-template-areas:
       "timer main    controls"
       ".     diagram .";
@@ -352,6 +352,7 @@ button.selected {
 
 .session-history {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
@@ -367,6 +368,33 @@ button.selected {
 .session-history th {
   color: var(--muted);
   font-weight: 600;
+}
+
+.session-history col.col-time {
+  width: 8.5rem;
+}
+
+.session-history col.col-pinpoint {
+  width: auto;
+}
+
+.session-history col.col-timing {
+  width: 3.5rem;
+}
+
+.session-history col.col-rate {
+  width: 5.5rem;
+}
+
+.session-history th.col-rate,
+.session-history td.col-rate {
+  white-space: normal;
+}
+
+.session-history th.col-pinpoint,
+.session-history td.col-pinpoint {
+  white-space: normal;
+  word-break: break-word;
 }
 
 .session-history tr.session-history-best {
