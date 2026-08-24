@@ -91,6 +91,28 @@
     return sessionRuns.filter(r => r.test.id === test.id && r.duration === duration);
   }
 
+  // Chromebooks get left open for days or weeks with the tab never
+  // reloaded, so sessionRuns can't just rely on a reload to stay
+  // same-day. Instead, each "PT day" runs 3am-to-3am rather than
+  // midnight-to-midnight - a concession to anyone genuinely working late -
+  // and any two timestamps are compared by which PT day they fall in.
+  const DAY_RESET_HOUR = 3;
+  function ptDayKey(date) {
+    const shifted = new Date(date.getTime() - DAY_RESET_HOUR * 60 * 60 * 1000);
+    return `${shifted.getFullYear()}-${shifted.getMonth()}-${shifted.getDate()}`;
+  }
+
+  // Clears sessionRuns if a 3am boundary has passed since the last recorded
+  // run, so a tab left open overnight (or for weeks) doesn't mix today's
+  // numbers with a stale day's. A no-op on the first run of a fresh tab.
+  function resetSessionIfNewDay(now) {
+    if (sessionRuns.length === 0) return;
+    const lastRun = sessionRuns[sessionRuns.length - 1];
+    if (ptDayKey(now) !== ptDayKey(lastRun.timestamp)) {
+      sessionRuns.length = 0;
+    }
+  }
+
   // ---- per-run state ----
   let currentTest = null;
   let currentDuration = null;
@@ -400,8 +422,11 @@
     resultCorrectPerMin.textContent = correctPerMin;
     resultIncorrectPerMin.textContent = incorrectPerMin;
 
+    const now = new Date();
+    resetSessionIfNewDay(now);
+
     const runRecord = {
-      timestamp: new Date(),
+      timestamp: now,
       test: currentTest,
       duration: currentDuration,
       correct: correctPerMin,

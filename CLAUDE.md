@@ -33,7 +33,7 @@ Pinpoints may set `source: "somefile.txt"` instead of inline `content`; `app.js`
 
 ## Design constraints (intentional — don't "fix" these)
 
-- **Nothing is persisted.** No localStorage, no accounts, no history. Students chart their own results on paper; that's the point. The only cross-run state is the in-memory, per-session last/best comparison (`sessionStats` in app.js), which is deliberately wiped on reload.
+- **Nothing is persisted.** No localStorage, no accounts, no history. Students chart their own results on paper; that's the point. The only cross-run state is the in-memory `sessionRuns` log in app.js (last/best comparison and the session-history table both read from it), which is deliberately wiped on reload - and also self-wipes if a 3am boundary has passed since the last run, since Chromebook tabs get left open for days and stale runs shouldn't mix into today's numbers (see `resetSessionIfNewDay`/`ptDayKey` in app.js).
 - **As few options as possible.** The README is explicit that features and settings distract students. Resist adding toggles, themes, gamification, or sounds.
 - **`assessment: true` pinpoints (the benchmark and checkpoints) force live error feedback ON**, overriding the student's toggle, so every administration of a probe is measured under the same condition. This was deliberately walked back from forcing feedback *off* — see todo.md item 6 before revisiting.
 - **No red/green pass–fail coloring.** Colorblind access is a standing concern; the keyboard diagram uses the Okabe–Ito palette, and aims are shown as reference numbers without met/not-met color coding.
