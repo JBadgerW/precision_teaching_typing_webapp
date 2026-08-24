@@ -338,6 +338,53 @@ button.selected {
   color: var(--muted);
 }
 
+.session-history-section {
+  margin: 1rem 0;
+}
+
+.session-history-section h3 {
+  margin-top: 0;
+}
+
+.session-history-scroll {
+  overflow-x: auto;
+}
+
+.session-history {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.session-history th,
+.session-history td {
+  padding: 0.4rem 0.45rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.session-history th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.session-history tr.session-history-best {
+  font-weight: 700;
+}
+
+.session-history .best-badge {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 1rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .results-buttons {
   display: flex;
   gap: 0.75rem;

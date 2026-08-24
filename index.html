@@ -77,6 +77,24 @@
     <h3>Slowest keys</h3>
     <ul id="slowKeyList" class="error-list"></ul>
 
+    <div id="sessionHistorySection" class="session-history-section hidden">
+      <h3>This session's runs</h3>
+      <div class="session-history-scroll">
+        <table id="sessionHistoryTable" class="session-history">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Pinpoint</th>
+              <th>Timing</th>
+              <th>Correct/min</th>
+              <th>Incorrect/min</th>
+            </tr>
+          </thead>
+          <tbody id="sessionHistoryBody"></tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="results-buttons">
       <button id="tryAgainBtn" type="button">Try Again</button>
       <button id="pickAnotherBtn" type="button">Pick Another Test or Timing</button>

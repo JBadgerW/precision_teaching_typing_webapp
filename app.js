@@ -39,6 +39,8 @@
   const resultAimLabel = document.getElementById("resultAimLabel");
   const resultAim = document.getElementById("resultAim");
   const sessionCompare = document.getElementById("sessionCompare");
+  const sessionHistorySection = document.getElementById("sessionHistorySection");
+  const sessionHistoryBody = document.getElementById("sessionHistoryBody");
   const errorList = document.getElementById("errorList");
   const slowKeyList = document.getElementById("slowKeyList");
   const tryAgainBtn = document.getElementById("tryAgainBtn");
@@ -78,14 +80,15 @@
     return (currentTest && currentTest.assessment) || showTypingErrors;
   }
 
-  // Session-only record of the last and best correct/incorrect-per-minute
-  // rates for each pinpoint+duration combo. Never written to storage - a
-  // page reload clears it, consistent with the app recording nothing (see
-  // the file header). Keyed by duration too, since comparing a 10s sprint
-  // to a 60s sprint on the same pinpoint isn't a fair "best".
-  const sessionStats = new Map();
-  function sessionStatsKey(test, duration) {
-    return `${test.id}::${duration}`;
+  // Session-only log of every run this page load, newest last. Never written
+  // to storage - a page reload clears it, consistent with the app recording
+  // nothing (see the file header). Everything derived for the results
+  // screen (last/best comparison, the full session table) reads from this
+  // one array rather than keeping separate aggregates in sync.
+  const sessionRuns = [];
+
+  function sameGroup(test, duration) {
+    return sessionRuns.filter(r => r.test.id === test.id && r.duration === duration);
   }
 
   // ---- per-run state ----
@@ -397,8 +400,18 @@
     resultCorrectPerMin.textContent = correctPerMin;
     resultIncorrectPerMin.textContent = incorrectPerMin;
 
+    const runRecord = {
+      timestamp: new Date(),
+      test: currentTest,
+      duration: currentDuration,
+      correct: correctPerMin,
+      incorrect: incorrectPerMin
+    };
+    sessionRuns.push(runRecord);
+
     renderAim(currentTest, correctPerMin, incorrectPerMin);
-    renderSessionCompare(currentTest, currentDuration, correctPerMin, incorrectPerMin);
+    renderSessionCompare(runRecord);
+    renderSessionHistory(runRecord);
     renderErrorBreakdown();
     renderSlowKeyBreakdown();
     renderReview();
@@ -448,33 +461,80 @@
   }
 
   // Shows this session's previous attempt and running best for this exact
-  // pinpoint+duration, then records the current attempt. Hidden entirely on
-  // the first attempt of a pinpoint+duration this session - there's nothing
-  // to compare against yet.
-  function renderSessionCompare(test, duration, correctPerMin, incorrectPerMin) {
-    const key = sessionStatsKey(test, duration);
-    const prev = sessionStats.get(key);
-    const current = { correct: correctPerMin, incorrect: incorrectPerMin };
-    const best = prev && !isBetterRun(current, { correct: prev.bestCorrect, incorrect: prev.bestIncorrect }, test)
-      ? { correct: prev.bestCorrect, incorrect: prev.bestIncorrect }
-      : current;
-
-    const updated = {
-      lastCorrect: correctPerMin,
-      lastIncorrect: incorrectPerMin,
-      bestCorrect: best.correct,
-      bestIncorrect: best.incorrect
-    };
-    sessionStats.set(key, updated);
-
-    if (!prev) {
+  // pinpoint+duration. Hidden entirely on the first attempt of a
+  // pinpoint+duration this session - there's nothing to compare against yet.
+  function renderSessionCompare(runRecord) {
+    const group = sameGroup(runRecord.test, runRecord.duration);
+    const prevRuns = group.slice(0, -1); // exclude the run just completed
+    if (prevRuns.length === 0) {
       sessionCompare.classList.add("hidden");
       return;
     }
+    const prev = prevRuns[prevRuns.length - 1];
+    const best = group.reduce((b, r) => (isBetterRun(r, b, runRecord.test) ? r : b));
     sessionCompare.textContent =
-      `This session - last: ${prev.lastCorrect}/min correct, ${prev.lastIncorrect}/min incorrect ` +
-      `· best: ${updated.bestCorrect}/min correct, ${updated.bestIncorrect}/min incorrect`;
+      `This session - last: ${prev.correct}/min correct, ${prev.incorrect}/min incorrect ` +
+      `· best: ${best.correct}/min correct, ${best.incorrect}/min incorrect`;
     sessionCompare.classList.remove("hidden");
+  }
+
+  function formatRunTimestamp(date) {
+    return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", second: "2-digit" });
+  }
+
+  // Full log of this session's runs, most recent first, except that the
+  // best run for the pinpoint+duration just completed (see isBetterRun)
+  // floats to the very top instead of sitting in its chronological spot.
+  // Only that one group's best is floated - pinpoints differ in what rate is
+  // even attainable (a wordbank of full sentences vs. a single key drill),
+  // so there's no PT-defensible way to pick one "best" across every pinpoint
+  // in the session, and floating a best per group attempted so far would
+  // scatter the table into unpredictable sections. The rest of the log
+  // (every pinpoint, every duration) stays in plain chronological order so
+  // the run-by-run sequence within the session is still readable.
+  function renderSessionHistory(runRecord) {
+    if (sessionRuns.length < 2) {
+      sessionHistorySection.classList.add("hidden");
+      return;
+    }
+    const group = sameGroup(runRecord.test, runRecord.duration);
+    const best = group.reduce((b, r) => (isBetterRun(r, b, runRecord.test) ? r : b));
+    const rest = sessionRuns.filter(r => r !== best).slice().reverse();
+
+    sessionHistoryBody.innerHTML = "";
+    [best, ...rest].forEach(r => {
+      const tr = document.createElement("tr");
+      if (r === best) tr.classList.add("session-history-best");
+
+      const timeCell = document.createElement("td");
+      if (r === best) {
+        const badge = document.createElement("span");
+        badge.className = "best-badge";
+        badge.textContent = "Best";
+        timeCell.appendChild(badge);
+      }
+      timeCell.appendChild(document.createTextNode(formatRunTimestamp(r.timestamp)));
+      tr.appendChild(timeCell);
+
+      const pinpointCell = document.createElement("td");
+      pinpointCell.textContent = r.test.name;
+      tr.appendChild(pinpointCell);
+
+      const timingCell = document.createElement("td");
+      timingCell.textContent = `${r.duration}s`;
+      tr.appendChild(timingCell);
+
+      const correctCell = document.createElement("td");
+      correctCell.textContent = r.correct;
+      tr.appendChild(correctCell);
+
+      const incorrectCell = document.createElement("td");
+      incorrectCell.textContent = r.incorrect;
+      tr.appendChild(incorrectCell);
+
+      sessionHistoryBody.appendChild(tr);
+    });
+    sessionHistorySection.classList.remove("hidden");
   }
 
   // The colored review is always shown on the results screen, even if
