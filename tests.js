@@ -789,6 +789,7 @@ const TESTS = [
       "60 seconds",
       "since 1776",
       "10 out of 10",
+      "John 3:16",
       "A113",
       "December 7, 1941,",
       "May the 4th be with you",
@@ -817,7 +818,8 @@ const TESTS = [
       "2001: A Space Odyssey",
       "Apollo 11",
       "Apollo 13",
-      "1492"
+      "1492",
+      "8 out of 10 cats"
     ],
     durations: [10, 15, 20, 30, 60, 120],
     defaultDuration: 60,
