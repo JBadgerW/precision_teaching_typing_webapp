@@ -47,6 +47,13 @@ The easiest way to run this in its current form as is:
 
 https://jbadgerw.github.io/precision_teaching_typing_webapp/
 
+### Terminal version
+
+There is also a terminal version, written in Python with the `curses` library:
+[precision_teaching_typing_tui](https://github.com/JBadgerW/precision_teaching_typing_tui).
+It uses the same pinpoints and scoring and runs on a computer with only a
+text console (no GUI or browser needed).
+
 ### Running the Web App Locally
 
 If you want to run the web app on your own computer, **merely cloning the repository 
